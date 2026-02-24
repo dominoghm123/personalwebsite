@@ -1,0 +1,1 @@
+I am an avid solo travel enthusiast. I hope that one day, I can carry my reflections on the world with me as I fly close to the ground, completing a journey of self-discovery by measuring the world with my own footsteps.

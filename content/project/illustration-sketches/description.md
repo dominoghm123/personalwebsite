@@ -1,0 +1,1 @@
+Hand-drawn sketches are one of my most primal forms of self-expression. Whenever I feel stuck or confused, I always find myself picking up a brush or a pen to doodle on a piece of paper. Even in today's world, where AI is so advanced, I still believe that drawing by hand is the most direct way to connect with the brain and showcase one's thinking.

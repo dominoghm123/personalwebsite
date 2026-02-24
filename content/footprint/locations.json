@@ -1,0 +1,170 @@
+[
+    {
+        "id": "shanghai",
+        "name": "Shanghai",
+        "coord": [
+            121.47,
+            31.23
+        ]
+    },
+    {
+        "id": "suzhou",
+        "name": "Suzhou",
+        "coord": [
+            120.59,
+            31.30
+        ]
+    },
+    {
+        "id": "wuxi",
+        "name": "Wuxi",
+        "coord": [
+            120.31,
+            31.49
+        ]
+    },
+    {
+        "id": "hangzhou",
+        "name": "Hangzhou",
+        "coord": [
+            120.21,
+            30.25
+        ]
+    },
+    {
+        "id": "wenzhou",
+        "name": "Wenzhou",
+        "coord": [
+            120.70,
+            27.99
+        ]
+    },
+    {
+        "id": "quanzhou",
+        "name": "Quanzhou",
+        "coord": [
+            118.59,
+            24.90
+        ]
+    },
+    {
+        "id": "shenzhen",
+        "name": "Shenzhen",
+        "coord": [
+            114.06,
+            22.54
+        ]
+    },
+    {
+        "id": "hongkong",
+        "name": "Hongkong",
+        "coord": [
+            114.17,
+            22.28
+        ]
+    },
+    {
+        "id": "changchun",
+        "name": "Changchun",
+        "coord": [
+            125.32,
+            43.82
+        ]
+    },
+    {
+        "id": "wuhan",
+        "name": "Wuhan",
+        "coord": [
+            114.30,
+            30.59
+        ]
+    },
+    {
+        "id": "chongqing",
+        "name": "Chongqing",
+        "coord": [
+            106.55,
+            29.56
+        ]
+    },
+    {
+        "id": "kunming",
+        "name": "Kunming",
+        "coord": [
+            102.83,
+            24.88
+        ]
+    },
+    {
+        "id": "dali",
+        "name": "Dali",
+        "coord": [
+            100.16,
+            25.69
+        ]
+    },
+    {
+        "id": "guilin",
+        "name": "Guilin",
+        "coord": [
+            110.18,
+            25.24
+        ]
+    },
+    {
+        "id": "taiyuan",
+        "name": "Taiyuan",
+        "coord": [
+            112.55,
+            37.87
+        ]
+    },
+    {
+        "id": "datong",
+        "name": "Datong",
+        "coord": [
+            113.37,
+            40.10
+        ]
+    },
+    {
+        "id": "london",
+        "name": "London",
+        "coord": [
+            -0.13,
+            51.51
+        ]
+    },
+    {
+        "id": "edingurgh",
+        "name": "Edingurgh",
+        "coord": [
+            -3.22,
+            55.94
+        ]
+    },
+    {
+        "id": "cornwall",
+        "name": "Cornwall",
+        "coord": [
+            -5.69,
+            50.13
+        ]
+    },
+    {
+        "id": "york",
+        "name": "York",
+        "coord": [
+            -1.09,
+            53.96
+        ]
+    },
+    {
+        "id": "seoul",
+        "name": "Seoul",
+        "coord": [
+            126.98,
+            37.57
+        ]
+    }
+]

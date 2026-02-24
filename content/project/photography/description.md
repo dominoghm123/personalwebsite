@@ -1,0 +1,1 @@
+Capture the moment with a lens; record life through imagery. I long to record the subtleties of the real world through my lens. They weave together the fragments of memory that mark the footprints I have left behind in this world.

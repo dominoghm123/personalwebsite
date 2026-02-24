@@ -1,0 +1,2 @@
+Hi I'm Qicheng — a builder, designer, writer, and wanderer based wherever my curiosity takes me next. I spend my days making things: products, essays, booklets, illustrations and everything I'm interested.
+This site is my Wonderland — a place to collect thoughts, share work, and document the world at my own pace. I sincerely believe in slow attention, the beauty of imperfection, and the power of observation and exploration.

@@ -1,0 +1,1 @@
+Music is an essential part of my life. I am passionate about attending live performances in various places, while also being an avid listener of vintage Soul and R&B music. Every time I arrive in a new cultural environment, I instinctively begin by considering how the local music expresses that specific culture.

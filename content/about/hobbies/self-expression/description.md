@@ -1,0 +1,1 @@
+I am dedicated to exploring different forms of self-expression. Text and audio have both been avenues I've explored extensively in the past. In the future, I hope to express who I am to the world through even more mediums, such as video or my own products.
