@@ -87,4 +87,4 @@
 ---
 
 ## 5. 实现“诫命”
-所有代码开发阶段必须将 **[planning/design-preview.html](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/design-preview.html)** 视为唯一的“事实真相源”。任何布局比例、间距大小（如 24px/64px）以及贝塞尔动画曲线必须做到 1:1 复刻。
+所有代码开发阶段必须将 **[planning/design-preview.html](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/design-preview.html)** 视为唯一的“事实真相源”。任何素材来源、布局比例、间距大小（如 24px/64px）以及贝塞尔动画曲线必须做到 1:1 复刻。

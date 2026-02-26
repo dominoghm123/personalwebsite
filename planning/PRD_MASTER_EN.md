@@ -87,4 +87,4 @@ A "breathing", textured digital territory showcasing Qicheng (Domino)'s creative
 ---
 
 ## 5. Implementation Commandment
-All engineering phases must refer to **`planning/design-preview.html`** as the "Source of Truth" for layout ratios, gap spacing (e.g., 24px/64px), and animation curves (`cubic-bezier(0.25, 0.46, 0.45, 0.94)`).
+All engineering phases must refer to **`planning/design-preview.html`** as the "Source of Truth" for material source, layout ratios, gap spacing (e.g., 24px/64px), and animation curves (`cubic-bezier(0.25, 0.46, 0.45, 0.94)`).
