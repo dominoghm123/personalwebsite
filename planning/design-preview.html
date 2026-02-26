@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Design Preview | Qicheng Domino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@400;700&family=Afacad:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ─── Design Tokens ─────────────────────────────── */
+    :root {
+      --color-primary: #C8C2E7;
+      --color-accent: #B8D4B8;
+      --color-bg: #faf9f5;
+      /* Warm paper-like off-white (Claude inspired) */
+      --color-text: #2D2D2D;
+      --color-text-muted: #888888;
+      --color-border: #E8E4F0;
+      /* Soft shadows as requested, no harsh drops */
+      --shadow-card: 0 24px 48px rgba(0, 0, 0, 0.015), 0 4px 12px rgba(0, 0, 0, 0.01);
+      --shadow-hover: 0 32px 64px rgba(200, 194, 231, 0.15), 0 8px 16px rgba(0, 0, 0, 0.02);
+      --color-blue-hint: #D0E1F9;
+      /* Organic Humanist corners (Inspired by Claude) */
+      --radius-sm: 12px;
+      /* Inner elements, smaller cards */
+      --radius-md: 24px;
+      /* Large structural wrappers */
+      --radius-pill: 999px;
+      /* Tags and buttons */
+      --font-heading: 'Hepta Slab', Georgia, serif;
+      --font-ui: 'Afacad', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── Reset & Base ──────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ─── Texture Overlay ───────────────────────────── */
+    .texture-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    #ripple-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Navigation ────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 64px;
+      z-index: 1000;
+      background: rgba(250, 249, 247, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-item {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--color-text);
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-primary);
+      transition: width 0.3s var(--ease-out);
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      width: 100%;
+    }
+
+    /* ─── Pages ─────────────────────────────────── */
+    .page {
+      display: none;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      padding-top: 80px;
+      animation: pageFadeIn 0.5s var(--ease-out);
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── Home Page ─────────────────────────────── */
+    #home {
+      display: none;
+      height: 100vh;
+      align-items: center;
+    }
+
+    #home.active {
+      display: flex;
+    }
+
+    .home-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      /* Shifted left slightly */
+      padding: 0 64px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .home-content h2 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+
+    .home-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 5vw, 72px);
+      /* Slightly smaller so it's not overly huge */
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .home-content h1 span {
+      color: var(--color-primary);
+    }
+
+    .butterfly-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .butterfly-wrapper {
+      transition: transform 0.6s var(--ease-out);
+      cursor: pointer;
+      filter: drop-shadow(0 16px 32px rgba(200, 194, 231, 0.3));
+    }
+
+    .butterfly-wrapper.large {
+      width: 320px;
+      transform: rotate(15deg);
+    }
+
+    .butterfly-wrapper.large:hover {
+      transform: translateY(-12px) rotate(20deg) scale(1.05);
+      /* Working hover! */
+    }
+
+    .butterfly-wrapper.small {
+      width: 180px;
+      margin-top: 120px;
+      transform: rotate(-20deg);
+    }
+
+    .butterfly-wrapper.small:hover {
+      transform: translateY(-12px) rotate(-15deg) scale(1.05);
+      /* Working hover! */
+    }
+
+    .butterfly-svg {
+      width: 100%;
+      height: auto;
+      /* Edge blurring via SVG filter is applied directly inside the SVG */
+    }
+
+    /* ─── Post Page ─────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header h1 {
+      font-family: var(--font-heading);
+      font-size: 42px;
+      margin-bottom: 12px;
+      text-transform: capitalize;
+    }
+
+    .masonry-grid {
+      columns: 3;
+      column-gap: 24px;
+    }
+
+    .post-card {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      background: white;
+      /* Default white */
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: all 0.3s var(--ease-out);
+      cursor: pointer;
+    }
+
+    .post-card:hover {
+      background: #f0eee6;
+      /* Change color on hover */
+      box-shadow: var(--shadow-hover);
+    }
+
+    .post-card img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .post-card-body {
+      padding: 20px;
+    }
+
+    .post-card-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(200, 194, 231, 0.15);
+      color: #8880b8;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .post-card h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .post-card p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Project Page ──────────────────────────── */
+    .project-featured {
+      width: 100%;
+      background: white;
+      /* Default white */
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 48px;
+      transition: background 0.3s var(--ease-out);
+    }
+
+    .project-featured:hover {
+      background: #f0eee6;
+      /* Change color on hover */
+    }
+
+    .project-featured .cover {
+      width: 100%;
+      height: 540px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      background: rgba(200, 194, 231, 0.1);
+      /* Soft purple tint to serve as a presentation stage */
+    }
+
+    .project-featured .cover img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.4s var(--ease-out);
+      background-color: transparent;
+      padding: 40px;
+      /* Beautiful breathing room */
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.1));
+      /* Add depth to the booklet rendering */
+    }
+
+    .project-featured .cover img.hover {
+      opacity: 0;
+    }
+
+    .project-featured:hover .cover img.base {
+      opacity: 0;
+    }
+
+    .project-featured:hover .cover img.hover {
+      opacity: 1;
+    }
+
+    .project-featured .content {
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .project-featured h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .project-featured p {
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+
+    .project-carousel {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 24px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .project-carousel::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .project-carousel::-webkit-scrollbar-thumb {
+      background: var(--color-border);
+      border-radius: 999px;
+      /* Pill */
+    }
+
+    .project-item {
+      flex: 0 0 calc((100% - 48px) / 3);
+      /* Exactly 1/3 minus gap margin, aligning flawlessly with top card! */
+      background: white;
+      /* Default white */
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .project-item:hover {
+      background: #f0eee6;
+      /* Change color on hover */
+      box-shadow: var(--shadow-hover);
+    }
+
+    .project-item .thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-item .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-item .info {
+      padding: 20px;
+    }
+
+    .project-item h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .project-item p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-item .explore-link {
+      color: var(--color-primary);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* ─── Footprint Page ────────────────────────── */
+    .map-box {
+      width: 100%;
+      height: 500px;
+      background: #E8E4F0;
+      border-radius: var(--radius-md);
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #f0f0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+    }
+
+    .map-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--color-primary);
+      border: 2px solid white;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-dot:hover {
+      transform: scale(1.5);
+      background: white;
+      border-color: var(--color-primary);
+    }
+
+    .footprint-detail {
+      padding: 32px;
+      background: white;
+      /* Default white */
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      min-height: 150px;
+      transition: background 0.3s var(--ease-out);
+    }
+
+    .footprint-detail:hover {
+      background: #f0eee6;
+      /* Change color on hover */
+    }
+
+    .detail-empty {
+      text-align: center;
+      color: var(--color-text-muted);
+      padding: 40px;
+    }
+
+    .detail-item {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      animation: pageFadeIn 0.3s;
+    }
+
+    .detail-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: var(--radius-sm);
+      background: #eee;
+      object-fit: cover;
+    }
+
+    .detail-content h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .detail-content p {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .post-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .post-link:hover {
+      background: var(--color-bg);
+      border-color: var(--color-primary);
+    }
+
+    .post-link img {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+    }
+
+    .post-link-info span {
+      font-size: 13px;
+      font-weight: 600;
+      display: block;
+    }
+
+    .detail-img-box {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .detail-img-box::after {
+      content: 'Click to switch';
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .detail-img-box:hover::after {
+      opacity: 1;
+    }
+
+    /* ─── About Page ────────────────────────────── */
+    .about-hero {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      gap: 64px;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .avatar-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+    }
+
+    .avatar-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.6s var(--ease-out);
+    }
+
+    .avatar-img.hover {
+      opacity: 0;
+    }
+
+    .avatar-box:hover .avatar-img.base {
+      opacity: 0;
+    }
+
+    .avatar-box:hover .avatar-img.hover {
+      opacity: 1;
+    }
+
+    .about-info h1 {
+      font-family: var(--font-heading);
+      font-size: 42px;
+      margin-bottom: 24px;
+    }
+
+    .about-info p {
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      font-size: 16px;
+    }
+
+    .interests-section {
+      margin-top: 64px;
+      border-top: 1px solid var(--color-border);
+      padding-top: 64px;
+    }
+
+    .interests-section h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .hobby-grid {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 24px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .hobby-grid::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .hobby-grid::-webkit-scrollbar-thumb {
+      background: var(--color-border);
+      border-radius: 999px;
+    }
+
+    .hobby-card {
+      flex: 0 0 320px;
+      background: #f0eee6;
+      /* Changed from white */
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+
+
+    .hobby-img {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hobby-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(15px);
+      /* Default blurred mask */
+      transition: filter 0.4s var(--ease-out);
+    }
+
+    .hobby-card:hover .hobby-img img {
+      filter: blur(0);
+      /* Reveal on hover */
+    }
+
+    .hobby-title {
+      display: none;
+    }
+
+    .hobby-description {
+      background: rgba(200, 194, 231, 0.05);
+      padding: 32px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      min-height: 120px;
+      display: none;
+      animation: pageFadeIn 0.3s;
+    }
+
+    .hobby-description.active {
+      display: block;
+    }
+
+    .contact-box {
+      margin-top: 80px;
+      border-top: 1px solid var(--color-border);
+      padding-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .contact-box h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--color-text-muted);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-end;
+    }
+
+    .social-link {
+      color: var(--color-text-muted);
+      font-size: 18px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .social-link:hover {
+      color: var(--color-text);
+      border-color: var(--color-primary);
+      background: white;
+    }
+
+    /* ─── Utils ─────────────────────────────────── */
+    [data-page] {
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+
+      .home-container,
+      .about-hero,
+      .project-featured {
+        grid-template-columns: 1fr;
+      }
+
+      .masonry-grid {
+        columns: 2;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hobby-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .masonry-grid {
+        columns: 1;
+      }
+
+      .container {
+        padding: 32px 20px;
+      }
+
+      nav {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="texture-overlay"></div>
+  <canvas id="ripple-canvas"></canvas>
+
+  <nav>
+    <div class="logo">Hi I'm <span>Qicheng</span></div>
+    <div class="nav-links">
+      <div class="nav-item active" data-page="home">Home</div>
+      <div class="nav-item" data-page="post">Post</div>
+      <div class="nav-item" data-page="project">Project</div>
+      <div class="nav-item" data-page="footprint">Footprint</div>
+      <div class="nav-item" data-page="about">About</div>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <div class="home-container">
+      <div class="home-content">
+        <h1>Welcome to my <span>WONDERLAND.</span></h1>
+      </div>
+      <div class="butterfly-container">
+        <!-- Large Butterfly -->
+        <div class="butterfly-wrapper large">
+          <svg class="butterfly-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="crayon-blur-large" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" result="displaced" />
+                <!-- Add slight edge blur for soft dreamy look -->
+                <feGaussianBlur in="displaced" stdDeviation="1.5" result="blurred" />
+                <feComposite in="blurred" in2="SourceAlpha" operator="in" />
+              </filter>
+            </defs>
+            <g filter="url(#crayon-blur-large)">
+              <ellipse cx="210" cy="210" rx="6" ry="60" fill="#8880b8" />
+              <path d="M210 180 C180 120, 80 80, 60 150 C40 220, 130 240, 210 230 Z" fill="#C8C2E7" opacity="0.85" />
+              <path d="M210 180 C240 120, 340 80, 360 150 C380 220, 290 240, 210 230 Z" fill="#C8C2E7" opacity="0.85" />
+              <path d="M210 235 C180 260, 90 290, 100 340 C110 370, 180 360, 210 310 Z" fill="#C8C2E7" opacity="0.65" />
+              <path d="M210 235 C240 260, 330 290, 320 340 C310 370, 240 360, 210 310 Z" fill="#C8C2E7"
+                opacity="0.65" />
+            </g>
+          </svg>
+        </div>
+        <!-- Small Butterfly -->
+        <div class="butterfly-wrapper small">
+          <svg class="butterfly-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="crayon-blur-small" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" result="displaced" />
+                <feGaussianBlur in="displaced" stdDeviation="1" result="blurred" />
+                <feComposite in="blurred" in2="SourceAlpha" operator="in" />
+              </filter>
+            </defs>
+            <g filter="url(#crayon-blur-small)">
+              <!-- Body slightly lighter -->
+              <ellipse cx="210" cy="210" rx="7" ry="50" fill="#9992c4" />
+              <!-- Wings slightly more transparent and pastel -->
+              <path d="M210 180 C180 120, 80 80, 60 150 C40 220, 130 240, 210 230 Z" fill="#D3CFF0" opacity="0.8" />
+              <path d="M210 180 C240 120, 340 80, 360 150 C380 220, 290 240, 210 230 Z" fill="#D3CFF0" opacity="0.8" />
+              <path d="M210 235 C180 260, 90 290, 100 340 C110 370, 180 360, 210 310 Z" fill="#D3CFF0" opacity="0.6" />
+              <path d="M210 235 C240 260, 330 290, 320 340 C310 370, 240 360, 210 310 Z" fill="#D3CFF0" opacity="0.6" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST -->
+  <section id="post" class="page">
+    <div class="container">
+      <div class="section-header">
+        <h1>Post</h1>
+      </div>
+      <div class="masonry-grid" id="post-grid">
+        <!-- Simulated Cards -->
+        <div class="post-card">
+          <div style="height: 240px; background: #ddd" class="dummy-img"></div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Urban Exploration</span>
+            <h3>Soul of the City in Hutongs</h3>
+            <p>Practicing perception as a traveler, every brick tells a story...</p>
+          </div>
+        </div>
+        <div class="post-card">
+          <div style="height: 380px; background: #eee" class="dummy-img"></div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Nature</span>
+            <h3>Dialogue with Silence</h3>
+            <p>The mountains don't speak, but they answer everything with wind and light.</p>
+          </div>
+        </div>
+        <div class="post-card">
+          <div style="height: 300px; background: #ccc" class="dummy-img"></div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Lifestyle</span>
+            <h3>Rhythm of a Drummer</h3>
+            <p>Finding precise expression without the need for words.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project" class="page">
+    <div class="container">
+      <div class="section-header">
+        <h1>Project</h1>
+      </div>
+
+      <div class="project-featured" id="featured-proj">
+        <div class="cover">
+          <img src="../public/images/project/urban-aesthetics-guide/booklet-shanghai-playbook-cover.webp"
+            alt="Urban Aesthetics" class="base">
+          <img src="../public/images/project/urban-aesthetics-guide/booklet-shanghai-playbook-2.webp"
+            alt="Urban Aesthetics Inside" class="hover">
+        </div>
+        <div class="content">
+          <h2>From Alleys to Aesthetics</h2>
+          <p id="featured-desc">Loading description...</p>
+          <a href="#" style="color: var(--color-primary); font-weight: 600;">Explore →</a>
+        </div>
+      </div>
+
+      <div class="project-carousel" id="project-carousel">
+        <div class="project-item" data-id="podcast"
+          onclick="window.open('https://www.xiaoyuzhoufm.com/podcast/63b53f37a7b161b6b921c84d', '_blank')">
+          <div class="thumb"><img src="../public/images/project/podcast/podcast_cover.webp" alt="Podcast"></div>
+          <div class="info">
+            <h3>Podcast: Theroversays</h3>
+            <p>This is a solo podcast centred around travel narratives yet not fixated on destinations. My guiding
+              principle is this—"To nurture imagination for the unfamiliar; our wealth lies in observation." Host
+              Domino is an urban wanderer who also delights in navigating cyberspace. A key life goal is to expand
+              the online map of Earth, uncovering more facets of the world and listening to its myriad voices. The
+              podcast is available across major platforms including XiaoYuZhou, Apple Podcasts, Spotify, NetEase Cloud
+              Music, QQ Music, Lizhi, WeChat Video Account, and Weibo Audio.</p>
+            <span class="explore-link">Explore →</span>
+          </div>
+        </div>
+        <div class="project-item" data-id="sketches" onclick="openGallery('sketches')">
+          <div class="thumb"><img src="../public/images/project/illustration-sketches/sketch-1.webp" alt="Sketches">
+          </div>
+          <div class="info">
+            <h3>Illustration Sketches</h3>
+            <p>Hand-drawn sketches are one of my most primal forms of self-expression. Whenever I feel stuck or
+              confused, I always find myself picking up a brush or a pen to doodle on a piece of paper. Even in today's
+              world, where AI is so advanced, I still believe that drawing by hand is the most direct way to connect
+              with the brain and showcase one's thinking.</p>
+            <span class="explore-link">Explore →</span>
+          </div>
+        </div>
+        <div class="project-item" data-id="photography" onclick="openGallery('photography')">
+          <div class="thumb"><img src="../public/images/project/photography/12.webp" alt="Photography"></div>
+          <div class="info">
+            <h3>Photography</h3>
+            <p>Capture the moment with a lens; record life through imagery. I long to record the subtleties of the real
+              world through my lens. They weave together the fragments of memory that mark the footprints I have left
+              behind in this world.</p>
+            <span class="explore-link">Explore →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTPRINT -->
+  <section id="footprint" class="page">
+    <div class="container">
+      <div class="section-header">
+        <h1>Footprint</h1>
+      </div>
+      <div class="map-box" id="map-target">
+        <div class="map-placeholder">
+          [Map UI - Leaflet.js with CartoDB Positron]
+          <!-- Custom Markers -->
+          <div class="map-dot" style="top: 35%; left: 80%;" data-city="shanghai"></div>
+          <div class="map-dot" style="top: 25%; left: 15%;" data-city="london"></div>
+          <div class="map-dot" style="top: 45%; left: 70%;" data-city="guilin"></div>
+          <div class="map-dot" style="top: 15%; left: 85%;" data-city="changchun"></div>
+        </div>
+      </div>
+      <div class="footprint-detail" id="footprint-detail">
+        <div class="detail-empty">Click a location to explore details</div>
+        <div class="detail-item" id="detail-actual" style="display: none;">
+          <div class="detail-img-box" id="fp-img-container">
+            <div class="detail-img" id="fp-img"
+              style="background: #ddd; display: flex; align-items:center; justify-content:center; font-size: 40px; overflow: hidden;">
+              <img src="" alt="" id="fp-actual-img"
+                style="width: 100%; height: 100%; object-fit: cover; display: none;">
+              <span id="fp-placeholder-icon">📍</span>
+            </div>
+          </div>
+          <div class="detail-content">
+            <h3 id="fp-title">City Name</h3>
+            <p id="fp-desc">Description text extracted from research content.</p>
+            <div class="post-link">
+              <div style="width: 44px; height: 44px; background: #eee; border-radius: var(--radius-sm);"></div>
+              <div class="post-link-info">
+                <span>Related Article</span>
+                <p style="font-size: 11px; margin:0">Read story in Daiyue 社 →</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page">
+    <div class="container">
+      <div class="about-hero">
+        <div class="avatar-box">
+          <!-- Relative paths based on planning/ folder -->
+          <img src="../public/images/about/avatar/avatar-2.webp" class="avatar-img base" alt="Profile 1">
+          <img src="../public/images/about/avatar/avatar-1.webp" class="avatar-img hover" alt="Profile 2">
+        </div>
+        <div class="about-info">
+          <h1>About Me</h1>
+          <p id="about-bio-text">Loading bio...</p>
+        </div>
+      </div>
+
+      <div class="interests-section">
+        <h2>Interests and Hobbies</h2>
+        <div class="hobby-grid">
+          <div class="hobby-card" data-hobby="music">
+            <div class="hobby-img"><img src="../public/images/about/hobbies/music/IMG_20251212_162426.webp" alt="Music">
+            </div>
+            <div class="hobby-title">Music</div>
+          </div>
+          <div class="hobby-card" data-hobby="solotrip">
+            <div class="hobby-img"><img src="../public/images/about/hobbies/solotrip/IMG_20251223_183207_1.webp"
+                alt="Solo Trip"></div>
+            <div class="hobby-title">Solo Trip</div>
+          </div>
+          <div class="hobby-card" data-hobby="self-expression">
+            <div class="hobby-img"><img src="../public/images/about/hobbies/self-expression/mmexport1764560632475.webp"
+                alt="Expression"></div>
+            <div class="hobby-title">Expression</div>
+          </div>
+        </div>
+        <div class="hobby-description" id="hobby-desc">
+          Click a hobby to see more.
+        </div>
+      </div>
+
+      <div class="contact-box">
+        <h3>Contact Me ></h3>
+        <div class="contact-links">
+          <a href="mailto:ANNApipedream@gmail.com" class="social-link" title="Email">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="WeChat Official Account">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M8.5 13.5c-2.48 0-4.5-1.68-4.5-3.75S6.02 6 8.5 6s4.5 1.68 4.5 3.75S10.98 13.5 8.5 13.5zM17 12c-2.21 0-4-1.5-4-3.35 0-.15.02-.3.04-.45.92-.04 1.77-.28 2.51-.67.45.69 1.13 1.25 1.95 1.62-.03.28-.06.57-.06.87 0 2.21-1.79 4-4 4zm0 2c2.48 0 4.5-1.68 4.5-3.75S19.48 6.5 17 6.5c-2.48 0-4.5 1.68-4.5 3.75s2.02 3.75 4.5 3.75zm-6.25-3.5c-2.07 0-3.75 1.34-3.75 3 0 1.29.98 2.42 2.37 2.82l-.62 1.93 2.15-1.19c.58.12 1.2.19 1.85.19 2.07 0 3.75-1.34 3.75-3S12.82 10.5 10.75 10.5z" />
+            </svg>
+          </a>
+          <a href="https://xhslink.com/m/1oSmWcMMIZm" target="_blank" class="social-link" title="Rednote">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.66 14.86c-1.07 1.07-2.73 1.34-4.23.63-1.46-.7-2.31-2.22-2.2-3.8.1-1.5.54-3.03 1.6-4.1.84-.84 2.1-1.27 3.32-.97.98.24 1.83 1.05 1.97 2.04.2 1.48-.3 3.13-1.46 4.2zm1.08-6.17c-.82-1-2.18-1.4-3.52-1.07C9.8 9.94 8.76 11.23 8.6 12.6c-.14 1.2.46 2.4 1.5 2.92 1.03.52 2.3.36 3.12-.46 1.06-1.06 1.6-2.6 1.44-4.04z" />
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/imdomino76" target="_blank" class="social-link" title="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/share/1EKFDw4p9Y" target="_blank" class="social-link" title="Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+            </svg>
+          </a>
+          <a href="https://x.com/Dianaghm1298" target="_blank" class="social-link" title="X">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/qicheng-dai-a8b07a273" target="_blank" class="social-link"
+            title="LinkedIn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* ── Navigation Logic ────────────────────── */
+    const navItems = document.querySelectorAll('.nav-item');
+    const pages = document.querySelectorAll('.page');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('data-page');
+        navItems.forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+
+        pages.forEach(p => {
+          p.classList.remove('active');
+          if (p.id === targetId) p.classList.add('active');
+        });
+        window.scrollTo(0, 0);
+      });
+    });
+
+    /* ── Content Simulation ──────────────────── */
+    const contentData = {
+      about: "Hi I'm Qicheng — a builder, designer, writer, and wanderer based wherever my curiosity takes me next. I spend my days making things: products, essays, booklets, illustrations and everything I'm interested. This site is my Wonderland — a place to collect thoughts, share work, and document the world at my own pace.",
+      hobbies: {
+        music: "Music is an essential part of my life. I am passionate about attending live performances in various places, while also being an avid listener of vintage Soul and R&B music.",
+        solotrip: "I am an avid solo travel enthusiast. I hope that one day, I can carry my reflections on the world with me as I fly close to the ground, completing a journey of self-discovery.",
+        'self-expression': "I am dedicated to exploring different forms of self-expression. Text and audio have both been avenues I've explored extensively in the past."
+      },
+      projects: {
+        featured: "I built the guide on the belief that 'Our wealth hides in daily familiarity.' The streets of ‘Ju-Fu-Chang’ are a living, breathing pulse—a perfect reflection of modern culture and personality."
+      }
+    };
+
+    document.getElementById('about-bio-text').innerText = contentData.about;
+    document.getElementById('featured-desc').innerText = contentData.projects.featured;
+
+    const hobbyCards = document.querySelectorAll('.hobby-card');
+    const hobbyDescBox = document.getElementById('hobby-desc');
+
+    hobbyCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const hobby = card.getAttribute('data-hobby');
+        hobbyDescBox.innerText = contentData.hobbies[hobby];
+        hobbyDescBox.classList.add('active');
+      });
+    });
+
+    function openGallery(projectName) {
+      alert(`Simulation: Would open a masonry gallery page for ${projectName} loading contents from /public/images/project/${projectName}`);
+    }
+
+    /* ── Footprint Interaction ────────────────── */
+    const cities = {
+      shanghai: { title: "Shanghai", desc: "", images: ["../public/images/footprint/mmexport1764560632475.webp"] },
+      london: { title: "London", desc: "", images: ["../public/images/footprint/london1.webp"] },
+      guilin: { title: "Guilin", desc: "", images: ["../public/images/footprint/guilin1.webp"] },
+      changchun: { title: "Changchun", desc: "", images: ["../public/images/footprint/changchun1.webp"] }
+    };
+
+    let currentCity = null;
+    let currentImageIndex = 0;
+
+    const fpImgElement = document.getElementById('fp-actual-img');
+    const fpPlaceholder = document.getElementById('fp-placeholder-icon');
+
+    document.querySelectorAll('.map-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const cityKey = dot.getAttribute('data-city');
+        currentCity = cities[cityKey];
+        currentImageIndex = 0;
+
+        document.querySelector('.detail-empty').style.display = 'none';
+        document.getElementById('detail-actual').style.display = 'grid';
+        document.getElementById('fp-title').innerText = currentCity.title;
+        document.getElementById('fp-desc').style.display = 'none'; // Desc hidden per request
+
+        updateFootprintImage();
+      });
+    });
+
+    document.getElementById('fp-img-container').addEventListener('click', () => {
+      if (!currentCity || currentCity.images.length <= 1) return;
+      currentImageIndex = (currentImageIndex + 1) % currentCity.images.length;
+      updateFootprintImage();
+    });
+
+    function updateFootprintImage() {
+      if (currentCity && currentCity.images && currentCity.images.length > 0) {
+        fpImgElement.src = currentCity.images[currentImageIndex];
+        fpImgElement.style.display = 'block';
+        fpPlaceholder.style.display = 'none';
+        fpImgElement.style.opacity = 0;
+        setTimeout(() => { fpImgElement.style.opacity = 1; }, 50);
+      } else {
+        fpImgElement.style.display = 'none';
+        fpPlaceholder.style.display = 'block';
+      }
+    }
+
+    /* ── Powdery Quicksand / Ripple Canvas ───────── */
+    const canvas = document.getElementById('ripple-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let ripples = [];
+    let butterflies = [];
+    let mouse = { x: -1000, y: -1000, vx: 0, vy: 0 };
+    let lastMouse = { x: -1000, y: -1000 };
+    let time = 0;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initParticles();
+    }
+
+    class Particle {
+      constructor() {
+        this.init();
+      }
+      init() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.0005;
+        this.vy = (Math.random() - 0.5) * 0.0005;
+        this.size = Math.random() * 1.5 + 0.5;
+        // Light green, light blue
+        const colors = ['#B5EAD7', '#BDE0FE', '#9ED2C6', '#A2D2FF'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        // Increased base alpha for better visibility
+        this.alpha = Math.random() * 0.4 + 0.35;
+        this.originAlpha = this.alpha;
+
+        // Add a random weight/depth factor. Lower = deeper sand that barely moves
+        // Higher = surface sand that gets pushed easily. 
+        // This ensures the area under the mouse never gets completely empty.
+        this.weight = Math.random() * Math.random();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      update() {
+        // Very slow flow movement
+        const wave = Math.sin(this.x * 0.003 + time * 0.2) * 0.015;
+        this.vx += wave;
+        this.vy += Math.cos(this.y * 0.003 + time * 0.2) * 0.015;
+
+        // Sand interaction with mouse (repel/displace)
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const force = (150 - dist) / 150;
+          // Apply weight so deep sand is barely affected
+          this.vx -= (dx / dist) * force * 1.15 * this.weight;
+          this.vy -= (dy / dist) * force * 1.15 * this.weight;
+          this.alpha = Math.min(1.0, this.alpha + 0.1);
+        } else {
+          this.alpha = Math.max(this.originAlpha, this.alpha - 0.05); // Fade out and recover quickly
+        }
+
+        // Add slight random Brownian motion (diffusion) so particles slowly fill empty gaps
+        this.vx += (Math.random() - 0.5) * 0.05;
+        this.vy += (Math.random() - 0.5) * 0.05;
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // High friction like sand
+        this.vx *= 0.8;
+        this.vy *= 0.8;
+
+        // Wrap around with a small bleed margin to simulate infinite boundary
+        if (this.x < -20) this.x = canvas.width + 20;
+        if (this.x > canvas.width + 20) this.x = -20;
+        if (this.y < -20) this.y = canvas.height + 20;
+        if (this.y > canvas.height + 20) this.y = -20;
+      }
+    }
+
+    class Butterfly {
+      constructor(x, y) {
+        this.x = x + (Math.random() - 0.5) * 20;
+        this.y = y + (Math.random() - 0.5) * 20;
+        this.vx = (Math.random() - 0.5) * 2 + mouse.vx * 0.1;
+        this.vy = (Math.random() - 0.5) * 2 + mouse.vy * 0.1 - 1; // Slight upward drift
+        this.size = Math.random() * 3 + 3;
+        this.life = 1.0;
+        this.wingSpeed = Math.random() * 0.3 + 0.2;
+        this.wingPhase = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= 0.015;
+        this.wingPhase += this.wingSpeed;
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.globalAlpha = Math.max(0, this.life);
+        ctx.fillStyle = '#C8C2E7'; // Light purple butterfly
+
+        // Flapping wings
+        const wingStretch = Math.max(0.2, Math.abs(Math.sin(this.wingPhase)));
+
+        // Left wing
+        ctx.beginPath();
+        ctx.ellipse(-this.size / 2, 0, this.size * wingStretch, this.size, Math.PI / 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Right wing
+        ctx.beginPath();
+        ctx.ellipse(this.size / 2, 0, this.size * wingStretch, this.size, -Math.PI / 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      butterflies = [];
+      const count = (canvas.width * canvas.height) / 130; // Drastically higher density sand (was 1000)
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.vx = e.clientX - lastMouse.x;
+      mouse.vy = e.clientY - lastMouse.y;
+      lastMouse.x = mouse.x = e.clientX;
+      lastMouse.y = mouse.y = e.clientY;
+
+      // Add ripple
+      if (Math.random() > 0.8) {
+        ripples.push({ x: e.clientX, y: e.clientY, r: 2, o: 0.3 });
+      }
+      // Add butterfly
+      if (Math.random() > 0.5) {
+        butterflies.push(new Butterfly(e.clientX, e.clientY));
+      }
+    });
+
+    function animate() {
+      time += 0.005; // Slower time evolution
+      ctx.fillStyle = '#FAF9F7';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // Update & Draw Ripples
+      ripples.forEach((r, i) => {
+        r.r += 1.2;
+        r.o -= 0.005;
+        if (r.o <= 0) ripples.splice(i, 1);
+        for (let j = 0; j < 2; j++) {
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, r.r + (j * 15), 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(200, 194, 231, ${r.o / (j + 1)})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      });
+
+      // Update & Draw Butterflies
+      for (let i = butterflies.length - 1; i >= 0; i--) {
+        const b = butterflies[i];
+        b.update();
+        b.draw();
+        if (b.life <= 0) {
+          butterflies.splice(i, 1);
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+
+</html>

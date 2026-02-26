@@ -44,9 +44,10 @@
 | Platform | Handle / Username | Format | URL / Info |
 | :--- | :--- | :--- | :--- |
 | **Email** | ANNApipedream@gmail.com | 文本 | ANNApipedream@gmail.com|
-| **WeChat** | 岱月社 | 公众号 | id:gh_529641f0e818|
+| **WeChat Official Account** | 岱月社 | 公众号 | id:gh_529641f0e818|
 | **Rednote** | Domino不开披萨店🍕 | URL | https://xhslink.com/m/1oSmWcMMIZm|
 | **Instagram** | imdomino76 | URL | https://www.instagram.com/imdomino76?igsh=Mwh5cnQ0MzVqOTBxaQ==|
 |**Facebook** | Qicheng Dai | URL | https://www.facebook.com/share/1EKFDw4p9Y|
+|**X** | 绮🍕 | URL | https://x.com/Dianaghm1298|
 |**Linkedin** | Qicheng Dai | URL | https://www.linkedin.com/in/qicheng-dai-a8b07a273?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app/|
 

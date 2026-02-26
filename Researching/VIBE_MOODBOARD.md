@@ -20,7 +20,8 @@
 | **Background** | Crayon Texture (蜡笔质感) | 采用类似 `wallpaper2.jpeg` 的粗糙微粒感全屏叠加层 (Grain/Noise) |
 | **Typography (H)** | **Hepta Slab** | 用于所有页面标题（如 WONDERLAND），增加视觉张力 |
 | **Typography (UI)**| **Afacad** | 用于导航栏、按钮及功能性 UI，确保极端清晰度 |
-| **Visual Style** | Soft Corners (柔和圆角) | 所有图片、卡块均采用适度的圆角处理，消除尖锐感 |
+| **Visual Style** | Sharp or Pill (极端/圆角) | 避免使用 4px/8px 这类模板感圆角。采用 0px 追求锐利极简，或 16px、24px 及完全胶囊形圆角。 |
+| **Icons** | Solid/Filled | 避免使用泛滥的线框图标 (outline icons)；使用实心/描实图标让界面更稳重。 |
 
 ---
 
@@ -49,5 +50,8 @@
 
 ## 6. ❌ Prohibited Aesthetic (反面防范)
 *   禁止使用带有“工业科技感”的高饱和度渐变。
-*   禁止使用 90 度直角和尖锐边缘。
 *   禁止使用刻板、对称的标准企业网站布局。
+*   **严禁使用默认的 Tag Blue 或 Indigo（靛蓝）颜色**作为主轴色除非特意要求。
+*   **严禁使用精确的 8px 或 4px 边框圆角 (Border Radius)**，这会看起来像通用 Bootstrap/Tailwind 模板。必须使用更大的 16px/24px/999px (Pill)。
+*   **严禁使用粗暴、高透明度的纯黑阴影 (#000000 with high opacity)**。请使用非常大、极其模糊、透明度极低的阴影背景 (或甚至仅用细腻的 1px border 替代)。
+*   **严禁使用通用的线框体图标 (Outline Icons)**。使用有体积感的 Solid / Filled 图标。
