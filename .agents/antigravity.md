@@ -8,10 +8,10 @@
 
 ## 1. 核心开发准则 (Development Mandates)
 
-1.  **绝对依从 (Absolute Compliance)**: 
-    *   严禁偏离 `planning/` 阶段的产出物。
-    *   必须以 `PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`，`QA_CHECKLIST.md` 为开发唯一依据。
-    *   任何对文档内容的重大偏离必须先向 USER 申请。
+1.  **核心文档即基准 (Core Documents as Ultimate Truth)**: 
+    *   **代码开发的唯一依据是**：`PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`, `CONTENT_INVENTORY.md`。
+    *   `design-preview.html` 仅作为**基础视觉美感参考**，禁止将其作为覆盖 PRD 逻辑的唯一真理。
+    *   如果发现视觉稿与核心规划文档（如 PRD 文案冲突、布局偏差）不符，必须先询问 USER，获取授权后有序修改或补全相应 Markdown 文档，再落实为代码。
 
 2.  **先论证后执行 (Explain Before Action)**:
     *   在创建任何新的工程文档或组件前，必须先解释 **Why**（设计意图、工程考量）。

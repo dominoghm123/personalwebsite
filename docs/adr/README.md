@@ -6,7 +6,8 @@
 
 | ADR | 标题 | 状态 | 日期 |
 |-----|------|------|------|
-| — | *（第一个 ADR 将在 Phase 1 构建开始时生成）* | — | — |
+| [0001](0001-css-modules-vs-tailwind.md) | CSS 方案：Modules vs Tailwind | Accepted | 2026-02-27 |
+| [0002](0002-animation-performance-strategy.md) | 动画方案：Canvas vs SVG Filter | Accepted | 2026-02-27 |
 
 ## 如何创建新 ADR
 

@@ -7,37 +7,56 @@
     justify-content: space-between;
     align-items: center;
     padding: 24px 64px;
-    /* 🎓 这里的设计决策：0.7 不透明度配合 10px 模糊，是复刻「毛玻璃」质感的关键参数，且支持 Safari 需要 -webkit 前缀。 */
     background: rgba(250, 249, 247, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
-    transition: all 0.3s var(--ease-out);
 }
 
 .logo {
-    font-family: 'Hepta Slab', serif;
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-text);
     letter-spacing: -0.02em;
+}
+
+.logo span {
+    color: var(--color-primary);
 }
 
 .links {
     display: flex;
-    gap: 32px;
+    gap: 40px;
 }
 
-.links a {
-    font-family: 'Afacad', sans-serif;
+.navItem {
+    font-family: var(--font-primary);
+    font-size: 14px;
     font-weight: 500;
-    font-size: 1.1rem;
-    color: var(--color-text);
-    transition: color 0.3s var(--ease-out);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
 }
 
-.links a:hover {
-    color: var(--color-primary);
+.navItem:hover {
+    color: var(--color-text);
+}
+
+.navItem::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-primary);
+    transition: width 0.3s var(--ease-out);
+}
+
+.navItem:hover::after {
+    width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -46,6 +65,6 @@
     }
 
     .links {
-        gap: 16px;
+        gap: 20px;
     }
 }

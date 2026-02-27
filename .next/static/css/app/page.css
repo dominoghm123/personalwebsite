@@ -1,0 +1,69 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/home/Butterfly.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.Butterfly_wrapper__zqtmX {
+    position: relative;
+    /* 🎓 从 absolute 改为 relative，因为它们在 Flex 容器中排列 */
+    cursor: pointer;
+    transition: transform 0.6s var(--ease-out);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    filter: drop-shadow(0 16px 32px rgba(200, 194, 231, 0.3));
+}
+
+.Butterfly_svg__NDojr {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 🎓 1:1 尺寸同步自 design-preview.html line 225 & 235 */
+.Butterfly_large__j7OWr {
+    width: 320px;
+    transform: rotate(15deg);
+}
+
+.Butterfly_small__PFePx {
+    width: 180px;
+    margin-top: 120px;
+    /* 🎓 design-preview.html line 236 要求的纵向偏移 */
+    transform: rotate(-20deg);
+}
+
+/* 🎓 交互动效同步自 DESIGN_SPEC 2.2 */
+.Butterfly_large__j7OWr:hover {
+    transform: translateY(-12px) rotate(20deg) scale(1.05);
+}
+
+.Butterfly_small__PFePx:hover {
+    transform: translateY(-12px) rotate(-15deg) scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .Butterfly_large__j7OWr {
+        width: 180px;
+        /* 移动端按比例缩小 */
+    }
+
+    .Butterfly_small__PFePx {
+        width: 100px;
+        margin-top: 60px;
+    }
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/home/SandCanvas.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/* 🎓 这里的设计决策：Canvas 必须 fixed + inset: 0 作为全屏背景层。
+   z-index: 0 确保它在内容之下，不遮挡文字和交互元素。
+   pointer-events: none 让鼠标事件穿透到底层 window，
+   这样 mousemove 事件由 window 级别监听器捕获，而不是 canvas 元素。
+*/
+.SandCanvas_canvas__mAUyk {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}

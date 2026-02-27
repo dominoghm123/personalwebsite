@@ -9,15 +9,15 @@ import styles from './Navbar.module.css';
 export default function Navbar() {
     return (
         <nav className={styles.navbar}>
-            {/* 🎓 这里的设计决策：Logo 保持全大写并强制使用 Hepta Slab，体现人文艺术品牌感。 */}
             <div className={styles.logo}>
-                <Link href="/">DOMINO.</Link>
+                <Link href="/">Hi I&apos;m <span>Qicheng</span></Link>
             </div>
             <div className={styles.links}>
-                <Link href="/post">Post</Link>
-                <Link href="/project">Project</Link>
-                <Link href="/footprint">Footprint</Link>
-                <Link href="/about">About</Link>
+                <Link href="/" className={styles.navItem}>Home</Link>
+                <Link href="/post" className={styles.navItem}>Post</Link>
+                <Link href="/project" className={styles.navItem}>Project</Link>
+                <Link href="/footprint" className={styles.navItem}>Footprint</Link>
+                <Link href="/about" className={styles.navItem}>About</Link>
             </div>
         </nav>
     );

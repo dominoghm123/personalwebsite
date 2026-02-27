@@ -1,0 +1,13 @@
+/* 🎓 这里的设计决策：Canvas 必须 fixed + inset: 0 作为全屏背景层。
+   z-index: 0 确保它在内容之下，不遮挡文字和交互元素。
+   pointer-events: none 让鼠标事件穿透到底层 window，
+   这样 mousemove 事件由 window 级别监听器捕获，而不是 canvas 元素。
+*/
+.canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}

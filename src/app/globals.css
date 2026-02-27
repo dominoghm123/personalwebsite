@@ -1,31 +1,22 @@
 /* 🎨 Global Design Tokens - Strictly derived from DESIGN_SPEC.md */
 :root {
-  /* Core Colors */
-  /* 🎓 这里的设计决策：直接搬运 DESIGN_SPEC.md 中的 15+ tokens，确保视觉还原度。 */
-  --color-bg: #FAF9F5;
-  /* Warm white paper texture base */
   --color-primary: #C8C2E7;
-  /* Wonderland Purple */
   --color-accent: #B8D4B8;
-  /* Soft Green */
+  --color-bg: #FAF9F5;
   --color-text: #2D2D2D;
-  /* Humanist Grey */
   --color-text-muted: #888888;
-  --color-hover-bg: #F0EEE6;
-  /* Card hover state */
   --color-border: #E8E4F0;
 
-  /* Surfaces & Shadows */
   --shadow-card: 0 24px 48px rgba(0, 0, 0, 0.015), 0 4px 12px rgba(0, 0, 0, 0.01);
   --shadow-hover: 0 32px 64px rgba(200, 194, 231, 0.15), 0 8px 16px rgba(0, 0, 0, 0.02);
 
-  /* Radius */
   --radius-sm: 12px;
   --radius-md: 24px;
   --radius-pill: 999px;
 
-  /* Motion */
-  /* 🎓 这里的设计决策：使用指定的贝塞尔曲线确保全站交互的「呼吸感」一致。 */
+  --font-primary: 'Afacad', system-ui, sans-serif;
+  --font-secondary: 'Hepta Slab', Georgia, serif;
+
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
