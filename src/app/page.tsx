@@ -1,4 +1,3 @@
-import SandCanvas from "@/components/home/SandCanvas";
 import Butterfly from "@/components/home/Butterfly";
 
 /**
@@ -14,13 +13,10 @@ export default function Home() {
             display: 'flex',
             alignItems: 'center'
         }}>
-            {/* 🎓 Canvas background */}
-            <SandCanvas />
-
             {/* 🎓 Grid Container (5fr 7fr) */}
             <div style={{
                 maxWidth: '1200px',
-                margin: '-120px auto 0', /* 🎓 视觉重心补偿：向上偏移 120px 对抗 navbar 带来的下坠感 */
+                margin: '-40px auto 0', /* 🎓 视觉重心轻微上移 40px 即可，无需之前的 -120px 巨幅补偿 */
                 width: '100%',
                 display: 'grid',
                 gridTemplateColumns: '5fr 7fr',

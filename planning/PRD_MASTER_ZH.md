@@ -1,7 +1,7 @@
 # 📜 PRD_ZH.md — 个人网站需求规格说明书 (中文版)
 
 > **版本**: v1.3 | **最后更新**: 2026-02-26
-> **状态**: **UI 设计已冻结**。后续所有代码实现必须严格还原 [design-preview.html](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/design-preview.html) 的美学风格与交互逻辑。
+> **状态**: **UI 设计已冻结**。代码开发的唯一依据是：`PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`, `CONTENT_INVENTORY.md`。`design-preview.html` 仅作为**基础视觉美感参考**，禁止将其作为覆盖 PRD 逻辑的唯一真理。
 
 ---
 
@@ -31,9 +31,11 @@
 ```
 
 ### 2.2 全局视觉准则
-- **标题规范**: 所有版块标题（Post, Project, Footprint）必须保持**首字母大写**。
+- **标题规范**: 所有二级版块页面的主标题（Post, Project, Footprint, About）必须为**首字母大写且无标点后缀**（如 `Post` 而非 `Post.`），字色保持主题淡紫色（`var(--color-primary)`），并缩小字号层级避免抢夺卡片视觉核心。
 - **反模版约束**: 严禁使用 0px/4px/8px 这类工业感圆角。严禁使用细线条轮廓图标（应使用 **实心 SVG** 图标）。
-- **背景纹理**: 全局覆盖微弱的颗粒（Grain/Noise）噪点，营造类似蜡笔/纸张的纸手感。
+- **背景纹理**: 
+  - 全局覆盖微弱的颗粒（Grain/Noise）噪点，营造类似蜡笔/纸张的纸手感。
+  - 全局应用流沙粒子背景（Sand Effect），由原本的单首页展示提升为贯穿所有页面的基础底面组件（无视路由切换持续运转，基于 Canvas 实现）。
 
 ---
 
@@ -53,6 +55,7 @@
 
 ### 3.3 动态项目与图集 (Project 页面)
 - **置顶项目**: 上下布局（顶部为大尺寸 cover 并在淡紫色背景舞台展示 + 底部为描述文字）。悬停时平滑切换图像。
+- **项目轮播**: 位于置顶项目下方，使用横向弹性滑动（Carousel / flex overflow-x）展示 podcast 与图集项目。**严禁在顶层 Project 页使用全屏瀑布流。**
 - **摄影/草图**: 点击对应卡片进入相应的 **二级瀑布流图集页**。
   - **自动扫描**: 页面逻辑需自动读取 `/public/images/project/[分类]/` 下的所有图片资产。
   - **画廊交互**: 支持点击图片进入沉浸式全屏查看模式 (Lightbox)。
@@ -86,6 +89,3 @@
 - **优化**: 部署时需开启 Vercel 的图像自动优化功能。
 
 ---
-
-## 5. 实现“诫命”
-所有代码开发阶段必须将 **[planning/design-preview.html](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/design-preview.html)** 视为唯一的“事实真相源”。任何素材来源、布局比例、间距大小（如 24px/64px）以及贝塞尔动画曲线必须做到 1:1 复刻。

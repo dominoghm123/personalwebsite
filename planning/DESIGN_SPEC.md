@@ -1,6 +1,6 @@
 # 🎨 DESIGN_SPEC.md — 视觉开发指南 (Source of Truth)
 
-> **版本**: v1.1 | **基准**: [design-preview.html](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/design-preview.html) & [PRD_ZH.md](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/PRD_MASTER_ZH.md)
+> **版本**: v1.1 | **基准**: [PRD_ZH.md](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/PRD_MASTER_ZH.md)
 > **核心原则**: 还原“呼吸感”与“纸张质感”。严禁使用标准框架默认样式。
 
 ---
@@ -78,6 +78,9 @@
 ## 4. 组件布局指南 (Layout Spec)
 
 - **主页位移补偿**: 由于 Navbar (fixed) 脱离文档流，为防止 `100vh` 主容器导致光标和视口绝对死板居中，主栅格必须追加 `margin-top: -120px` 的光学校正。
+- **子页顶部补偿**: 所有二级散页（Post, Project, Footprint, About）由于 Navbar 高度为 80px，为了实现视觉上 40px 的安全间距，主容器应当强制设定 `padding-top: 120px`。
+- **子页标题规划**: 主标题 H1 必须无标点，字号等比缩小控制在 `44px` 以下，且颜色保持 `var(--color-primary)`。
+- **卡片紧凑度约束**: 瀑布流或网格内的内容卡片，其内部间距（padding）与内联标题字号需执行等比压缩约束。目标是确保在标准视口下（如 1080p），进入二级页面时不滑动页面即可看清卡片的完整下边缘。
 - **容器宽度**: `max-width: 1200px`
 - **全局左右留白**: 宽屏下为 `64px`
 - **响应式断点**:
@@ -88,6 +91,6 @@
 ---
 
 ## 5. 开发约束 (Hard Rules)
-1. **禁止缩放**: 卡片悬停除蝴蝶外，严禁产生任何导致页面重排或物理位移的缩放。
+1. **禁止缩放**: 卡片悬停除蝴蝶外，严禁产生任何导致页面重排或物理位移的缩放 (仅允许变更 backgroundColor 为 var(--color-hover-bg) 与 box-shadow)。
 2. **禁止突变**: 所有的颜色切换、透明度变化必须绑定 `transition: all 0.3s var(--ease-out)`。
 3. **SVG图标**: 全部使用**实心 (Solid)** 风格，杜绝线条感图标。

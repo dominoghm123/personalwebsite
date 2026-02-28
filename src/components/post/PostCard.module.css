@@ -1,0 +1,85 @@
+.card {
+    display: block;
+    /* 覆盖 a 标签默认样式 */
+    background-color: #FFFFFF;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    /* 🎓 缩紧内边距，使卡片整体更迷你 */
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-card);
+    transition: background-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+
+    /* 🎓 必须阻止内部元素换行截断，这是 column 瀑布流的关键 */
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 24px;
+    /* 🎓 外边距同步缩减，提供紧凑视觉 */
+    /* 间距由 card 自身 margin 控制，而非 grid gap */
+}
+
+/* 🎓 根据 PRD，只有变色，没有位移或放大 */
+.card:hover {
+    background-color: var(--color-hover-bg);
+    box-shadow: var(--shadow-hover);
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* 给封面固定个视觉重心比例，也可以做成自适应 */
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.image {
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.title {
+    font-family: var(--font-secondary);
+    /* Hepta Slab */
+    font-size: clamp(18px, 1.8vw, 20px);
+    /* 🎓 标题显著变瘦小，不再像广告牌 */
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tag {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+}
+
+.excerpt {
+    font-family: var(--font-primary);
+    /* Afacad */
+    font-size: 14px;
+    /* 更精致的辅助文本层级 */
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+}
+
+.date {
+    font-family: var(--font-primary);
+    /* Afacad */
+    font-size: 13px;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+}

@@ -51,19 +51,3 @@
         margin-top: 60px;
     }
 }
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/home/SandCanvas.module.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-/* 🎓 这里的设计决策：Canvas 必须 fixed + inset: 0 作为全屏背景层。
-   z-index: 0 确保它在内容之下，不遮挡文字和交互元素。
-   pointer-events: none 让鼠标事件穿透到底层 window，
-   这样 mousemove 事件由 window 级别监听器捕获，而不是 canvas 元素。
-*/
-.SandCanvas_canvas__mAUyk {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-}

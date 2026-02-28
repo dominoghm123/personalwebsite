@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TextureOverlay from "@/components/layout/TextureOverlay";
 import Navbar from "@/components/layout/Navbar";
+import SandCanvas from "@/components/home/SandCanvas";
 
 export const metadata: Metadata = {
     title: "Qicheng's Personal Website",
@@ -21,10 +22,11 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet" />
             </head>
             <body>
-                {/* 🎓 这里的设计决策：布局组件（Texture, Navbar）放在根层级，确保路由跳转时不重复卸载渲染，保持动效丝滑。 */}
+                {/* 🎓 这里的设计决策：布局组件（Texture, Navbar, SandCanvas）放在根层级，确保路由跳转时不重复卸载渲染，保持动效丝滑。 */}
+                <SandCanvas />
                 <TextureOverlay />
                 <Navbar />
-                <main style={{ paddingTop: '100px' }}>
+                <main>
                     {children}
                 </main>
             </body>

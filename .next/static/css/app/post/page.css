@@ -1,0 +1,110 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/post/PostCard.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.PostCard_card__MSy0x {
+    display: block;
+    /* 覆盖 a 标签默认样式 */
+    background-color: #FFFFFF;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    /* 🎓 缩紧内边距，使卡片整体更迷你 */
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-card);
+    transition: background-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+
+    /* 🎓 必须阻止内部元素换行截断，这是 column 瀑布流的关键 */
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 24px;
+    /* 🎓 外边距同步缩减，提供紧凑视觉 */
+    /* 间距由 card 自身 margin 控制，而非 grid gap */
+}
+
+/* 🎓 根据 PRD，只有变色，没有位移或放大 */
+.PostCard_card__MSy0x:hover {
+    background-color: var(--color-hover-bg);
+    box-shadow: var(--shadow-hover);
+}
+
+.PostCard_imageWrapper__dA9gA {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* 给封面固定个视觉重心比例，也可以做成自适应 */
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.PostCard_image__9vWkO {
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.PostCard_title__7EfpL {
+    font-family: var(--font-secondary);
+    /* Hepta Slab */
+    font-size: clamp(18px, 1.8vw, 20px);
+    /* 🎓 标题显著变瘦小，不再像广告牌 */
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.PostCard_tags__DIvPO {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.PostCard_tag__5WTy0 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+}
+
+.PostCard_excerpt__BD9cC {
+    font-family: var(--font-primary);
+    /* Afacad */
+    font-size: 14px;
+    /* 更精致的辅助文本层级 */
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+}
+
+.PostCard_date__P1n5A {
+    font-family: var(--font-primary);
+    /* Afacad */
+    font-size: 13px;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/post/PostGrid.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.PostGrid_grid__sQKka {
+    /* 🎓 这里的核心技巧：完全不用 JS 手算瀑布流，只用 CSS columns 原生特性 */
+    column-count: 3;
+    column-gap: 32px;
+    width: 100%;
+}
+
+/* 屏幕缩小，调整列数 */
+@media (max-width: 1100px) {
+    .PostGrid_grid__sQKka {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 700px) {
+    .PostGrid_grid__sQKka {
+        column-count: 1;
+    }
+}

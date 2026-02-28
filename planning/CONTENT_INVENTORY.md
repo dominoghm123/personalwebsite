@@ -9,7 +9,7 @@
 | Asset Name | Description (描述) | Format | Source / Info |
 | :--- | :--- | :--- | :--- |
 | **Urban Aesthetics Guide** | 《From Alleys to Aesthetics》：付费城市指南 | **External Link** | Store: Payhip / Images: `/public/images/project/urban-aesthetics-guide/` / Desc: `/content/project/urban-asthetics-guide/description.md` |
-| **Podcast: 漫游者说** | "漫游者说theroversays" 的 RSS 订阅源 | 链接 | RSS: `https://feed.xyzfm.space/3akeece8mgfr` / Cover: `/public/images/project/podcast/podcast-cover.webp` / Desc: `/content/project/podcast-theroversays/description.md`|
+| **Podcast: 漫游者说** | "漫游者说theroversays" 的 小宇宙URL| 链接 |  `https://www.xiaoyuzhoufm.com/podcast/63b53f37a7b161b6b921c84d` / Cover: `/public/images/project/podcast/podcast-cover.webp` / Desc: `/content/project/podcast-theroversays/description.md`|
 | **Illustration-sketches**| 个人手绘草图/插画系列 | 图片 (本地) | Path: `/public/images/project/illustration-sketches` / Desc: `/content/project/illustration-sketches/description.md` |
 | **Photography** | 个人摄影作品集合 | 图片 (本地) | Path: `/public/images/project/photography` / Desc: `/content/project/photography/description.md` |
 

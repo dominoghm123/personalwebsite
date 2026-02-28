@@ -1,0 +1,38 @@
+{
+    "featured": {
+        "id": "urban-aesthetics",
+        "title": "From Alleys to Aesthetics",
+        "description": "I built the guide on the belief that \"Our wealth hides in daily familiarity.\" The streets of ‘Ju-Fu-Chang’ are a living, breathing tag for China's realest, youngest pulse—a perfect reflection of modern culture, economy, and personality. This guide is my way of sharing the Shanghai I know best. It converts my guided and years of living experience over here into a powerful tool you can use instantly.",
+        "images": {
+            "base": "/images/project/urban-aesthetics-guide/booklet-shanghai-playbook-cover.webp",
+            "hover": "/images/project/urban-aesthetics-guide/booklet-shanghai-playbook-2.webp"
+        },
+        "link": "https://payhip.com/b/example"
+    },
+    "carousel": [
+        {
+            "id": "podcast",
+            "title": "Podcast: 漫游者说",
+            "thumbnail": "/images/project/podcast/podcast_cover.webp",
+            "description": "This is a solo podcast centred around travel narratives yet not fixated on destinations. My guiding principle is this—\"To nurture imagination for the unfamiliar; our wealth lies in observation.\" Host Domino is an urban wanderer who also delights in navigating cyberspace. A key life goal is to expand the online map of Earth, uncovering more facets of the world and listening to its myriad voices. The podcast is available across major platforms including XiaoYuZhou, Apple Podcasts, Spotify, NetEase Cloud Music, QQ Music, Lizhi, WeChat Video Account, and Weibo Audio.",
+            "externalUrl": "https://www.xiaoyuzhoufm.com/podcast/63b53f37a7b161b6b921c84d",
+            "type": "external"
+        },
+        {
+            "id": "sketches",
+            "title": "Illustration Sketches",
+            "thumbnail": "/images/project/illustration-sketches/sketch-1.webp",
+            "description": "Hand-drawn sketches are one of my most primal forms of self-expression. Whenever I feel stuck or confused, I always find myself picking up a brush or a pen to doodle on a piece of paper. Even in today's world, where AI is so advanced, I still believe that drawing by hand is the most direct way to connect with the brain and showcase one's thinking.",
+            "type": "gallery",
+            "category": "illustration-sketches"
+        },
+        {
+            "id": "photography",
+            "title": "Photography",
+            "thumbnail": "/images/project/photography/12.webp",
+            "description": "Capture the moment with a lens; record life through imagery. I long to record the subtleties of the real world through my lens. They weave together the fragments of memory that mark the footprints I have left behind in this world.",
+            "type": "gallery",
+            "category": "photography"
+        }
+    ]
+}
