@@ -53,30 +53,20 @@
     font-weight: 600;
 }
 
-.PostCard_tags__DIvPO {
+.PostCard_content__i7aqT {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+    flex-direction: column;
 }
 
-.PostCard_tag__5WTy0 {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    background-color: rgba(0, 0, 0, 0.03);
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-}
-
-.PostCard_excerpt__BD9cC {
-    font-family: var(--font-primary);
-    /* Afacad */
-    font-size: 14px;
-    /* 更精致的辅助文本层级 */
-    line-height: 1.5;
-    color: var(--color-text-muted);
-    margin-bottom: 16px;
+.PostCard_title__7EfpL {
+    font-family: var(--font-secondary);
+    /* Hepta Slab */
+    font-size: clamp(18px, 1.8vw, 20px);
+    /* 🎓 标题显著变瘦小，不再像广告牌 */
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .PostCard_date__P1n5A {

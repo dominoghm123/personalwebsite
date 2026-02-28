@@ -17,8 +17,6 @@
       "title": "string (文章标题)",
       "cover": "string (封面图 URL/路径)",
       "url": "string (原始微信链接)",
-      "tags": ["string"],
-      "excerpt": "string (摘要)",
       "publishDate": "string (YYYY-MM-DD)"
     }
   ]

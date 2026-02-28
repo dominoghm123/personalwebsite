@@ -1,3 +1,6 @@
 Researching/material/sample/layout/footprint-interaction.mov
 .DS_Store
 node_modules
+.env
+.env.example
+

@@ -66,8 +66,9 @@
 
 ### 3.1 微信文章自动化抓取 (Scripts)
 - **实现方式**: `scripts/crawler.js` 
-- **方案**: 由于微信公众号非公开 RSS，采用 **Puppeteer / Cheerio** 模拟访问“岱月社”公众号搜狗搜索结果页或使用第三方微信转 RSS 服务。
-- **触发**: 在 `package.json` 的 `prebuild` 钩子中运行：`"build": "node scripts/crawler.js && next build"`。
+- **方案**: 采用微信后台管理接口 `appmsgpublish` 直连模式。利用管理员 Cookie 与 Token 在打包时获取官方数据流。
+- **纯净方案**: 脚本仅抓取 **标题、封面、原始链接、发布日期**，严格过滤正文摘要 (Excerpt) 与分类标签 (Tags) 以保持 UI 呼吸感。
+- **触发**: 在 `package.json` 的 `prebuild` 钩子中运行：`"build": "npm run prebuild && next build"`。
 
 ### 3.2 文件夹自动扫描 (Directory API)
 - **痛点**: `Photography` 页面图片太多，手动配置 JSON 太累。

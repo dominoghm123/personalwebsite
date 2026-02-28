@@ -50,30 +50,20 @@
     font-weight: 600;
 }
 
-.tags {
+.content {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
+    flex-direction: column;
 }
 
-.tag {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    background-color: rgba(0, 0, 0, 0.03);
-    padding: 4px 12px;
-    border-radius: var(--radius-pill);
-}
-
-.excerpt {
-    font-family: var(--font-primary);
-    /* Afacad */
-    font-size: 14px;
-    /* 更精致的辅助文本层级 */
-    line-height: 1.5;
-    color: var(--color-text-muted);
-    margin-bottom: 16px;
+.title {
+    font-family: var(--font-secondary);
+    /* Hepta Slab */
+    font-size: clamp(18px, 1.8vw, 20px);
+    /* 🎓 标题显著变瘦小，不再像广告牌 */
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .date {

@@ -6,7 +6,7 @@
 ---
 
 ## 🚀 第一步：核心骨架与视觉复刻 (Core & Visuals - 并行)
-*策略：直接将 [design-preview.html](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/design-preview.html) 验证过的 CSS 和 Canvas 逻辑组件化，快速铺满首页。*
+*策略：基于PRD和SPEC文档，将 [design-preview.html]验证过的 CSS 和 Canvas 逻辑组件化，快速铺满首页。*
 
 - [ ] **Next.js & Global Layout**: 快速搭建 Next.js 骨架，同步完成 `TextureOverlay` 和 `Navbar`（2小时内容）。
 - [ ] **视觉逻辑迁移 (Visual Porting)**:
