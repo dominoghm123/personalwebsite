@@ -1,0 +1,22 @@
+{
+    "hobbies": [
+        {
+            "id": "music",
+            "title": "Music",
+            "image": "/images/about/hobbies/music/IMG_20251212_162426.webp",
+            "description": "Music is an essential part of my life. I am passionate about attending live performances in various places, while also being an avid listener of vintage Soul and R&B music."
+        },
+        {
+            "id": "solotrip",
+            "title": "Solo Trip",
+            "image": "/images/about/hobbies/solotrip/1.webp",
+            "description": "I am an avid solo travel enthusiast. I hope that one day, I can carry my reflections on the world with me as I fly close to the ground, completing a journey of self-discovery."
+        },
+        {
+            "id": "self-expression",
+            "title": "Expression",
+            "image": "/images/about/hobbies/self-expression/1.webp",
+            "description": "I am dedicated to exploring different forms of self-expression. Text and audio have both been avenues I've explored extensively in the past."
+        }
+    ]
+}

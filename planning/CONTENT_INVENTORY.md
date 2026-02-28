@@ -45,7 +45,7 @@
 | :--- | :--- | :--- | :--- |
 | **Email** | ANNApipedream@gmail.com | 文本 | ANNApipedream@gmail.com|
 | **WeChat Official Account** | 岱月社 | 公众号 | id:gh_529641f0e818|
-| **Rednote** | Domino不开披萨店🍕 | URL | https://xhslink.com/m/1oSmWcMMIZm|
+| **Rednote** | Domino不开披萨店🍕 | URL | https://www.xiaohongshu.com/user/profile/5f43306500000000010041a7?xsec_token=ABBRjr4-VzgUFqmKYSCeAPt_WE8fhu5bKsWeCarHnUgDw%3D&xsec_source=pc_search|
 | **Instagram** | imdomino76 | URL | https://www.instagram.com/imdomino76?igsh=Mwh5cnQ0MzVqOTBxaQ==|
 |**Facebook** | Qicheng Dai | URL | https://www.facebook.com/share/1EKFDw4p9Y|
 |**X** | 绮🍕 | URL | https://x.com/Dianaghm1298|

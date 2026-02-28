@@ -1,0 +1,268 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 64px;
+    padding-bottom: 120px;
+    /* PRD rule: solid bottom breathing room */
+    position: relative;
+    z-index: 10;
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 0px;
+    /* Let interestsSection handle spacing */
+}
+
+.avatarBox {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+}
+
+.avatarBase,
+.avatarHover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.6s var(--ease-out);
+}
+
+.avatarHover {
+    opacity: 0;
+}
+
+.avatarBox:hover .avatarBase {
+    opacity: 0;
+}
+
+.avatarBox:hover .avatarHover {
+    opacity: 1;
+}
+
+.aboutInfo h1 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    margin-bottom: 24px;
+    color: var(--color-text);
+}
+
+.aboutInfo p {
+    font-family: var(--font-primary);
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+/* --- Interests Section --- */
+.interestsSection {
+    margin-top: 64px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 48px;
+}
+
+.interestsSection h2 {
+    font-family: var(--font-secondary);
+    font-size: clamp(24px, 2.5vw, 32px);
+    margin-bottom: 40px;
+    color: var(--color-text);
+}
+
+.hobbyGrid {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 24px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hobbyGrid::-webkit-scrollbar {
+    height: 4px;
+}
+
+.hobbyGrid::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 999px;
+}
+
+.hobbyCard {
+    flex: 0 0 320px;
+    background: #f0eee6;
+    /* Thematic secondary background */
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+}
+
+.hobbyCard:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.hobbyImg {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    /* Ensure no background bleed */
+    background: #e0e6ed;
+}
+
+.hobbyImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Core Interaction: High Blur Default */
+    filter: blur(15px);
+    transform: scale(1.05);
+    /* Prevent blurred edges */
+    transition: filter 0.4s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.hobbyTitle {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Clarify on Hover */
+.hobbyCard:hover .hobbyImg img {
+    filter: blur(0);
+    transform: scale(1);
+}
+
+.hobbyCard:hover .hobbyTitle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Active Box Below Slider */
+.hobbyDescription {
+    margin-top: 32px;
+    background: rgba(200, 194, 231, 0.05);
+    padding: 32px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+/* Custom fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.descContent {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.descTitle {
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.descText {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.descPlaceholder {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 15px;
+}
+
+/* --- Contact Section --- */
+.contactBox {
+    margin-top: 64px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.contactBox h3 {
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    color: var(--color-text-muted);
+}
+
+.contactLinks {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.socialLink {
+    color: var(--color-text-muted);
+    /* Set icon size */
+    width: 24px;
+    height: 24px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialLink:hover {
+    color: var(--color-primary);
+}
+
+.socialIcon {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contactBox {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+}

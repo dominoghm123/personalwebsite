@@ -115,7 +115,7 @@
   },
   "contacts": [
     { "platform": "Email", "value": "ANNApipedream@gmail.com", "icon": "ri-mail-fill" },
-    { "platform": "Rednote", "url": "https://xhslink.com/m/1oSmWcMMIZm", "icon": "ri-rednote-fill" },
+    { "platform": "Rednote", "url": "https://www.xiaohongshu.com/user/profile/5f43306500000000010041a7?xsec_token=ABBRjr4-VzgUFqmKYSCeAPt_WE8fhu5bKsWeCarHnUgDw%3D&xsec_source=pc_search", "icon": "ri-rednote-fill" },
     { "platform": "Instagram", "url": "https://www.instagram.com/imdomino76", "icon": "ri-instagram-fill" },
     { "platform": "X", "url": "https://x.com/Dianaghm1298", "icon": "ri-twitter-x-fill" },
     { "platform": "Linkedin", "url": "https://www.linkedin.com/in/qicheng-dai-a8b07a273", "icon": "ri-linkedin-fill" }

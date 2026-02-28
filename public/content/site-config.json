@@ -1,0 +1,40 @@
+{
+    "siteName": "Official Design Preview | Qicheng Domino",
+    "about": {
+        "bio": [
+            "Hi I'm <span style=\"font-family: var(--font-secondary); color: var(--color-primary); font-size: 20px; font-weight: 600;\">Qicheng</span> — a builder, designer, writer, and wanderer based wherever my curiosity takes me next. I spend my days making things: products, essays, booklets, illustrations and everything I'm interested.",
+            "This site is my Wonderland — a place to collect thoughts, share work, and document the world at my own pace. I sincerely believe in slow attention, the beauty of imperfection, and the power of observation and exploration."
+        ],
+        "avatar": {
+            "base": "/images/about/avatar/avatar-2.webp",
+            "hover": "/images/about/avatar/avatar-1.webp"
+        }
+    },
+    "contacts": [
+        {
+            "platform": "Email",
+            "value": "ANNApipedream@gmail.com",
+            "icon": "ri-mail-fill"
+        },
+        {
+            "platform": "Rednote",
+            "url": "https://www.xiaohongshu.com/user/profile/5f43306500000000010041a7?xsec_token=ABBRjr4-VzgUFqmKYSCeAPt_WE8fhu5bKsWeCarHnUgDw%3D&xsec_source=pc_search",
+            "icon": "ri-rednote-fill"
+        },
+        {
+            "platform": "Instagram",
+            "url": "https://www.instagram.com/imdomino76",
+            "icon": "ri-instagram-fill"
+        },
+        {
+            "platform": "X",
+            "url": "https://x.com/Dianaghm1298",
+            "icon": "ri-twitter-x-fill"
+        },
+        {
+            "platform": "Linkedin",
+            "url": "https://www.linkedin.com/in/qicheng-dai-a8b07a273",
+            "icon": "ri-linkedin-fill"
+        }
+    ]
+}

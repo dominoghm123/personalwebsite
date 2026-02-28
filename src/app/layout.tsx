@@ -5,8 +5,27 @@ import Navbar from "@/components/layout/Navbar";
 import SandCanvas from "@/components/home/SandCanvas";
 
 export const metadata: Metadata = {
-    title: "Qicheng's Personal Website",
-    description: "Creative portfolio and photography of Qicheng (Domino).",
+    title: {
+        template: '%s | Qicheng Domino',
+        default: 'Qicheng Domino',
+    },
+    description: "Creative portfolio, thoughts, and photography of Qicheng (Domino). A builder, designer, writer, and wanderer.",
+    keywords: ["Qicheng", "Domino", "Portfolio", "Photography", "Design", "Writer", "Web Development"],
+    authors: [{ name: "Qicheng Domino" }],
+    creator: "Qicheng Domino",
+    openGraph: {
+        type: "website",
+        locale: "en_US",
+        url: "https://qicheng-domino.com",
+        title: "Qicheng Domino | Wonderland",
+        description: "Creative portfolio, thoughts, and photography of Qicheng (Domino).",
+        siteName: "Qicheng Domino",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Qicheng Domino",
+        description: "Creative portfolio, thoughts, and photography of Qicheng (Domino).",
+    },
 };
 
 export default function RootLayout({
