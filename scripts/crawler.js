@@ -61,62 +61,94 @@ async function fetchFromBackend() {
     }
 
     const url = `https://mp.weixin.qq.com/cgi-bin/appmsgpublish`;
-    const params = {
-        sub: 'list',
-        begin: 0,
-        count: 10,
-        fakeid: CONFIG.BIZ,
-        type: '101_1',
-        free_publish_type: '1',
-        sub_action: 'list_ex',
-        token: CONFIG.TOKEN,
-        lang: 'zh_CN',
-        f: 'json',
-        ajax: '1'
-    };
+    const posts = [];
+    const targetCount = 10;
+    let begin = 0;
+    const pageSize = 10;
+
+    console.log(`Searching for ${targetCount} valid articles...`);
 
     try {
-        const response = await axios.get(url, {
-            params,
-            headers: {
-                'Cookie': CONFIG.COOKIE,
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Referer': 'https://mp.weixin.qq.com/'
-            }
-        });
+        while (posts.length < targetCount) {
+            const params = {
+                sub: 'list',
+                begin: begin,
+                count: pageSize,
+                fakeid: CONFIG.BIZ,
+                type: '101_1',
+                free_publish_type: '1',
+                sub_action: 'list_ex',
+                token: CONFIG.TOKEN,
+                lang: 'zh_CN',
+                f: 'json',
+                ajax: '1'
+            };
 
-        if (response.data.base_resp?.ret !== 0) {
-            console.error('API Error:', response.data.base_resp?.err_msg);
-            return null;
+            const response = await axios.get(url, {
+                params,
+                headers: {
+                    'Cookie': CONFIG.COOKIE,
+                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Referer': 'https://mp.weixin.qq.com/'
+                }
+            });
+
+            if (response.data.base_resp?.ret !== 0) {
+                console.error('API Error:', response.data.base_resp?.err_msg);
+                break;
+            }
+
+            let publishPage = response.data.publish_page;
+            if (typeof publishPage === 'string') {
+                publishPage = JSON.parse(publishPage);
+            }
+
+            const list = publishPage.publish_list || [];
+            if (list.length === 0) {
+                console.log('Reach end of publish list.');
+                break;
+            }
+
+            for (const entry of list) {
+                let info = entry.publish_info;
+                if (typeof info === 'string') {
+                    info = JSON.parse(info);
+                }
+
+                if (info.appmsgex && info.appmsgex.length > 0) {
+                    const article = info.appmsgex[0];
+
+                    // 🎓 核心：过滤已删除或无效内容
+                    // 微信 API 可能返回 del_flag: 1 或者 is_deleted: true
+                    const isDeleted = article.del_flag === 1 ||
+                        article.is_deleted === true ||
+                        article.title.includes('该内容已被发布者删除') ||
+                        !article.link;
+
+                    if (isDeleted) {
+                        console.log(`⏭️ Skipping deleted article: ${article.title || 'Unknown Title'}`);
+                        continue;
+                    }
+
+                    posts.push({
+                        id: crypto.createHash('md5').update(article.link).digest('hex'),
+                        title: article.title,
+                        url: article.link,
+                        coverSrc: article.cover,
+                        publishDate: new Date(article.create_time * 1000).toISOString().split('T')[0]
+                    });
+
+                    if (posts.length >= targetCount) break;
+                }
+            }
+
+            begin += pageSize;
+            console.log(`Current progress: ${posts.length}/${targetCount} articles found...`);
+
+            // Safety break to prevent infinite loops
+            if (begin > 100) break;
         }
 
-        // 🎓 修复点：微信嵌套 JSON 字符串解析
-        let publishPage = response.data.publish_page;
-        if (typeof publishPage === 'string') {
-            publishPage = JSON.parse(publishPage);
-        }
-
-        const list = publishPage.publish_list || [];
-        const posts = [];
-
-        for (const entry of list) {
-            let info = entry.publish_info;
-            if (typeof info === 'string') {
-                info = JSON.parse(info);
-            }
-
-            if (info.appmsgex && info.appmsgex.length > 0) {
-                const article = info.appmsgex[0];
-                posts.push({
-                    id: crypto.createHash('md5').update(article.link).digest('hex'),
-                    title: article.title,
-                    url: article.link,
-                    coverSrc: article.cover,
-                    publishDate: new Date(article.create_time * 1000).toISOString().split('T')[0],
-                    excerpt: article.digest || '...'
-                });
-            }
-        }
         return posts;
     } catch (e) {
         console.error('Fetch failed:', e.message);

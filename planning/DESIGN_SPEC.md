@@ -65,6 +65,10 @@
 
 ### 3.2 关于页趣味遮罩 (About Mask)
 - **状态 A**: `filter: blur(15px)` (默认)
+- **Featured Card**: `var(--shadow-card)`
+- **Hover Transitions**: `0.3s var(--ease-out)`
+- **Lightbox Overlay**: `rgba(0, 0, 0, 0.9)`, `z-index: 2000` (must be above Navbar), `backdrop-filter: blur(20px)`.
+- **Lightbox Buffer**: Top padding `80px` to clear navigation visual space.
 - **状态 B**: `filter: blur(0)` (悬停)
 - **过渡**: `filter 0.4s var(--ease-out)`
 
@@ -72,6 +76,11 @@
 - **背景**: `rgba(250, 249, 247, 0.7)`
 - **背景模糊**: `backdrop-filter: blur(10px)`
 - **内边距**: `24px 64px`
+- **活动状态**: 当前页面对应的导航项底部显示紫色下划线 (`var(--color-primary)`) 且字色变深 (`var(--color-text)`)。
+
+### 3.4 全局容器与间距 (Layout Utilities)
+- **.container-padding**: 全局侧边距，桌面端 64px，移动端 (<900px) 32px，手机端 (<600px) 20px。
+- **居中对齐**: 所有内容卡片和页眉 H1 均需在 `max-width: 1200px` 内居中并应用背景纹理感。
 
 ---
 

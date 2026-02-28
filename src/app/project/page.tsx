@@ -1,30 +1,16 @@
-import { readFileSync } from 'fs';
-import path from 'path';
 import FeaturedProject from '@/components/project/FeaturedProject';
 import ProjectCarousel from '@/components/project/ProjectCarousel';
-
-async function getProjectsData() {
-    const filePath = path.join(process.cwd(), 'public/content/projects.json');
-    try {
-        const fileContents = readFileSync(filePath, 'utf8');
-        return JSON.parse(fileContents);
-    } catch {
-        return { featured: null, carousel: [] };
-    }
-}
+import { getProjects } from '@/lib/data';
 
 export default async function ProjectPage() {
-    const data = await getProjectsData();
+    const data = await getProjects();
 
     return (
-        <div style={{
+        <div className="container-padding" style={{
             paddingTop: '120px',
             paddingBottom: '40px',
             maxWidth: '1200px',
             margin: '0 auto',
-            paddingLeft: '64px',
-            paddingRight: '64px',
-            width: '100%',
             position: 'relative',
             zIndex: 10,
         }}>

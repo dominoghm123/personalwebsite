@@ -1,28 +1,28 @@
 # ⚡ IMPLEMENTATION_PLAN_OPTIMIZED.md — 高效开发实施计划 (缩短工期版)
 
-> **Status**: **规划优化中 (Optimized)** | **Version**: v1.1
+> **Status**: **开发完成 (Finalized)** | **Version**: v1.2
 > **核心策略**：通过并行开发、复用预览版逻辑、以及优先交付 MVP (最少可行性产品) 来极大缩短开发周期。
 
 ---
 
-## 🚀 第一步：核心骨架与视觉复刻 (Core & Visuals - 并行)
+## 🚀 第一步：核心骨架与视觉复刻 (Core & Visuals) [DONE]
 *策略：基于PRD和SPEC文档，将 [design-preview.html]验证过的 CSS 和 Canvas 逻辑组件化，快速铺满首页。*
 
-- [ ] **Next.js & Global Layout**: 快速搭建 Next.js 骨架，同步完成 `TextureOverlay` 和 `Navbar`（2小时内容）。
-- [ ] **视觉逻辑迁移 (Visual Porting)**:
-    - [ ] 直接迁移 Sand 粒子代码至 React Canvas 组件。
-    - [ ] 封装 Butterfly SVG 为独立 React 组件（带 Crayon Filter）。
-- [ ] **页面切换 (Fast Routes)**: 使用 `framer-motion` 全局配置页面淡入淡出。
+- [x] **Next.js & Global Layout**: 快速搭建 Next.js 骨架，同步完成 `TextureOverlay` 和 `Navbar`。
+- [x] **视觉逻辑迁移 (Visual Porting)**:
+    - [x] 直接迁移 Sand 粒子代码至 React Canvas 组件。
+    - [x] 封装 Butterfly SVG 为独立 React 组件（带 Crayon Filter）。
+- [x] **页面切换 (Fast Routes)**: 使用 `framer-motion` 全局配置页面淡入淡出。
 
-## ⛓️ 第二步：数据驱动与自动化 (Data & Automation - 核心)
+## ⛓️ 第二步：数据驱动与自动化 (Data & Automation) [DONE]
 *策略：取消复杂的数据库，直接采用“本地文件系统即数据库”的思路，简化权限与部署。*
 
-- [ ] **通用数据加载器 (Single Logic)**: 编写一个统一的 `getStaticProps` 逻辑，用于读取 `public/content/` 下的所有 JSON。
-- [ ] **微信抓取脚本 (scripts/crawler.js)**: 在构建脚本中加入一行命令，自动从公众号获取内容。
-- [ ] **Post 瀑布流组件**:
-    - [ ] 基于 React 纯 CSS Column 分配制作流式的 Masonry 卡片网络，并引入 `Hepta Slab` 卡片专属字体响应约束。
-- [ ] **Project 特型舞台**:
-    - [ ] 开发高度还原的 `FeaturedProject`（悬停换图）与横向拉拽的 `ProjectCarousel`（弹性滑动），彻底废弃标准版栅格机制。
+- [x] **通用数据加载器 (Single Logic)**: 编写一个统一的数据加载服务 (`src/lib/data.ts`)。
+- [x] **微信抓取脚本 (scripts/crawler.js)**: 在构建脚本中加入一行命令，自动从公众号获取内容。
+- [x] **Post 瀑布流组件**:
+    - [x] 基于 React 纯 CSS Column 分配制作流式的 Masonry 卡片网络。
+- [x] **Project 特型舞台**:
+    - [x] 开发高度还原的 `FeaturedProject`（悬停换图）与横向拉拽的 `ProjectCarousel`（弹性滑动）。
 
 ## 📸 第三步：多媒体系统 (Multis & Map) [DONE]
 *策略：通过文件夹动态扫描 (Directory Scanning) 替代手动录入，减少后续维护工作。*

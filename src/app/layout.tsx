@@ -3,6 +3,7 @@ import "./globals.css";
 import TextureOverlay from "@/components/layout/TextureOverlay";
 import Navbar from "@/components/layout/Navbar";
 import SandCanvas from "@/components/home/SandCanvas";
+import PageTransition from "@/components/layout/PageTransition";
 
 export const metadata: Metadata = {
     title: {
@@ -46,7 +47,9 @@ export default function RootLayout({
                 <TextureOverlay />
                 <Navbar />
                 <main>
-                    {children}
+                    <PageTransition>
+                        {children}
+                    </PageTransition>
                 </main>
             </body>
         </html>

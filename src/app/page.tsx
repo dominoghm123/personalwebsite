@@ -1,22 +1,28 @@
 import Butterfly from "@/components/home/Butterfly";
+import SocialContact from "@/components/layout/SocialContact";
+import { getSiteConfig } from "@/lib/data";
 
 /**
  * 🎓 Home Page
- * 1:1 REPLICATION of design-preview.html
+ * 1:1 REPLICATION of design-preview.html with addition of centered social links
  */
-export default function Home() {
+export default async function Home() {
+    const siteConfig = await getSiteConfig();
+
     return (
         <section id="home" style={{
-            height: '100vh',
-            overflow: 'hidden',
+            minHeight: '100vh',
             position: 'relative',
             display: 'flex',
-            alignItems: 'center'
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingBottom: '40px'
         }}>
             {/* 🎓 Grid Container (5fr 7fr) */}
             <div style={{
                 maxWidth: '1200px',
-                margin: '-40px auto 0', /* 🎓 视觉重心轻微上移 40px 即可，无需之前的 -120px 巨幅补偿 */
+                margin: '0 auto',
                 width: '100%',
                 display: 'grid',
                 gridTemplateColumns: '5fr 7fr',
@@ -24,7 +30,9 @@ export default function Home() {
                 gap: '64px',
                 alignItems: 'center',
                 position: 'relative',
-                zIndex: 10
+                zIndex: 10,
+                flexGrow: 1,
+                marginTop: '-80px' /* Substantial negative margin to lift up the grid, navbar is 80px */
             }}>
                 {/* Left: Content */}
                 <div style={{ pointerEvents: 'auto' }}>
@@ -51,6 +59,18 @@ export default function Home() {
                     <Butterfly size="large" />
                     <Butterfly size="small" />
                 </div>
+            </div>
+
+            {/* 🎓 Home Footer: Centered Social Links as requested */}
+            <div style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                padding: '24px 0',
+                position: 'relative',
+                zIndex: 20
+            }}>
+                <SocialContact contacts={siteConfig.contacts} centered />
             </div>
         </section>
     );

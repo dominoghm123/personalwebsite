@@ -1,13 +1,13 @@
 # 📊 DATA_SCHEMA.md — 数据契约与内容规范
 
-> **Status**: **规划中 (Planning)** | **Version**: v1.0
+> **Status**: **已实施 (Implemented)** | **Version**: v1.1
 > 本文档定义了网站核心 JSON 数据的结构以及媒体资产的处理规范，确保开发过程中数据流动的准确性。
 
 ---
 
 ## 1. 核心 JSON 数据结构
 
-### 1.1 微信文章索引 (`content/wechat-posts.json`)
+### 1.1 微信文章索引 (`public/content/wechat-posts.json`)
 由抓取脚本自动生成。
 ```json
 {
@@ -23,7 +23,7 @@
 }
 ```
 
-### 1.2 足迹数据 ([content/footprint/locations.json](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/content/footprint/locations.json))
+### 1.2 足迹数据 (`public/content/locations.json`)
 ```json
 {
   "locations": [
@@ -38,7 +38,7 @@
 }
 ```
 
-### 1.3 项目数据 (`content/projects.json`)
+### 1.3 项目数据 (`public/content/projects.json`)
 作为首页 Carousel 和 Featured 的核心索引。区分外链项目与内建图集模式。
 ```json
 {
@@ -50,7 +50,7 @@
       "base": "/images/project/...-cover.webp",
       "hover": "/images/project/...-2.webp"
     },
-    "link": "https://..." 
+    "link": "https://..."
   },
   "carousel": [
     {
@@ -73,7 +73,7 @@
 }
 ```
 
-### 1.4 兴趣模块数据 (`content/about/hobbies.json`)
+### 1.4 兴趣模块数据 (`public/content/hobbies.json`)
 支撑关于页的“遮罩交互”。
 ```json
 {

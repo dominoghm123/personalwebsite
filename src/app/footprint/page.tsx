@@ -1,31 +1,15 @@
-import { readFileSync } from 'fs';
-import path from 'path';
 import FootprintMap from '@/components/footprint/FootprintMap';
-
-async function getLocations() {
-    const filePath = path.join(process.cwd(), 'public/content/locations.json');
-    try {
-        const fileContents = readFileSync(filePath, 'utf8');
-        const data = JSON.parse(fileContents);
-        return data.locations || [];
-    } catch (e) {
-        console.error('Error reading locations:', e);
-        return [];
-    }
-}
+import { getLocations } from '@/lib/data';
 
 export default async function FootprintPage() {
     const locations = await getLocations();
 
     return (
-        <div style={{
+        <div className="container-padding" style={{
             paddingTop: '120px',
             paddingBottom: '40px',
             maxWidth: '1200px',
             margin: '0 auto',
-            paddingLeft: '64px',
-            paddingRight: '64px',
-            width: '100%',
             position: 'relative',
             zIndex: 10,
         }}>

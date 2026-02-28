@@ -62,6 +62,26 @@ a {
   pointer-events: none;
   z-index: 9999;
 }
+
+/* Global Layout Utilities */
+.container-padding {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+@media (max-width: 900px) {
+  .container-padding {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 /*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/home/SandCanvas.module.css ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************/
@@ -77,19 +97,6 @@ a {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-}
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/TextureOverlay.module.css ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************/
-.TextureOverlay_overlay__fpIF7 {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    width: 100vw;
-    height: 100vh;
-    mix-blend-mode: multiply;
-    /* Optional: enhances paper texture feel */
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/Navbar.module.css ***!
@@ -136,7 +143,8 @@ a {
     transition: color 0.3s;
 }
 
-.Navbar_navItem__5zS_S:hover {
+.Navbar_navItem__5zS_S:hover,
+.Navbar_active__YMfDB {
     color: var(--color-text);
 }
 
@@ -151,7 +159,8 @@ a {
     transition: width 0.3s var(--ease-out);
 }
 
-.Navbar_navItem__5zS_S:hover::after {
+.Navbar_navItem__5zS_S:hover::after,
+.Navbar_active__YMfDB::after {
     width: 100%;
 }
 
@@ -163,4 +172,17 @@ a {
     .Navbar_links__c080l {
         gap: 20px;
     }
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/TextureOverlay.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.TextureOverlay_overlay__fpIF7 {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    mix-blend-mode: multiply;
+    /* Optional: enhances paper texture feel */
 }

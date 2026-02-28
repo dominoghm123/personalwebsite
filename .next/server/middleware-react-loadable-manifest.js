@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"components/footprint/FootprintMap.tsx -> ./MapInner\":{\"id\":\"components/footprint/FootprintMap.tsx -> ./MapInner\",\"files\":[\"static/css/_app-pages-browser_src_components_footprint_MapInner_tsx.css\",\"static/chunks/_app-pages-browser_src_components_footprint_MapInner_tsx.js\"]}}"

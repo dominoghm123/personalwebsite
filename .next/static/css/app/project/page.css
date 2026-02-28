@@ -1,0 +1,194 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/project/FeaturedProject.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+.FeaturedProject_featured__iR4N5 {
+    width: 100%;
+    background: white;
+    /* Base white */
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+    transition: background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    cursor: pointer;
+}
+
+.FeaturedProject_featured__iR4N5:hover {
+    background: var(--color-hover-bg);
+    box-shadow: var(--shadow-hover);
+}
+
+.FeaturedProject_cover__J9LLv {
+    width: 100%;
+    height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background: rgba(200, 194, 231, 0.1);
+}
+
+.FeaturedProject_baseImg__shAVb,
+.FeaturedProject_hoverImg__V3rgI {
+    object-fit: contain !important;
+    transition: opacity 0.4s var(--ease-out);
+    padding: 40px;
+    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.1));
+}
+
+.FeaturedProject_hoverImg__V3rgI {
+    opacity: 0;
+}
+
+.FeaturedProject_featured__iR4N5:hover .FeaturedProject_baseImg__shAVb {
+    opacity: 0;
+}
+
+.FeaturedProject_featured__iR4N5:hover .FeaturedProject_hoverImg__V3rgI {
+    opacity: 1;
+}
+
+.FeaturedProject_content__E8gDt {
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.FeaturedProject_title__vY3D5 {
+    font-family: var(--font-secondary);
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 16px;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.FeaturedProject_description__a3_p6 {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    font-size: 15px;
+}
+
+.FeaturedProject_explore__uTeZi {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+@media (max-width: 900px) {
+    .FeaturedProject_cover__J9LLv {
+        height: 380px;
+    }
+
+    .FeaturedProject_content__E8gDt {
+        padding: 32px 24px;
+    }
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/project/ProjectCarousel.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+.ProjectCarousel_carousel__GSqNA {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 24px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ProjectCarousel_carousel__GSqNA::-webkit-scrollbar {
+    height: 4px;
+}
+
+.ProjectCarousel_carousel__GSqNA::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-pill);
+}
+
+.ProjectCarousel_item__4styr {
+    flex: 0 0 380px;
+    /* 🎓 增加容器宽度，确保即便是 3 个项目也能产生滚动感，而非固定填充 */
+    background: white;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.ProjectCarousel_item__4styr:hover {
+    background: var(--color-hover-bg);
+    box-shadow: var(--shadow-hover);
+}
+
+.ProjectCarousel_thumb__A4n2I {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ProjectCarousel_image__qdY12 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ProjectCarousel_info__NuOF7 {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ProjectCarousel_title__QE1R9 {
+    font-family: var(--font-secondary);
+    font-size: clamp(18px, 1.8vw, 20px);
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.25;
+}
+
+.ProjectCarousel_description__pCFWV {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.ProjectCarousel_explore__FER4E {
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+@media (max-width: 900px) {
+    .ProjectCarousel_item__4styr {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(50% - 12px);
+    }
+}
+
+@media (max-width: 600px) {
+    .ProjectCarousel_item__4styr {
+        flex: 0 0 85%;
+    }
+}

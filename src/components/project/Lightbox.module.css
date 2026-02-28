@@ -1,12 +1,16 @@
 .overlay {
     position: fixed;
     inset: 0;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    /* 🎓 提升层级至 2000，绝对压制 Navbar (1000) */
+    background: rgba(0, 0, 0, 0.9);
+    /* 🎓 稍微加深蒙层，提升沉浸感 */
     backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 80px;
+    /* 🎓 预留出 Navbar 的视觉安全间距 */
     cursor: zoom-out;
     animation: fadeIn 0.3s var(--ease-out);
 }
@@ -14,7 +18,8 @@
 .content {
     position: relative;
     max-width: 90vw;
-    max-height: 90vh;
+    max-height: calc(100vh - 120px);
+    /* 🎓 动态计算高度，防止大图抵住顶部 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +29,7 @@
 .image {
     object-fit: contain;
     max-width: 100%;
-    max-height: 90vh;
+    max-height: calc(100vh - 120px);
     user-select: none;
 }
 
@@ -77,8 +82,13 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -86,7 +96,18 @@
         width: 44px;
         height: 44px;
     }
-    .prev { left: 10px; }
-    .next { right: 10px; }
-    .close { top: 20px; right: 20px; position: fixed; }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    .close {
+        top: 20px;
+        right: 20px;
+        position: fixed;
+    }
 }

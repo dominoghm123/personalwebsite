@@ -9,25 +9,25 @@
 
 ```text
 /
-├── components/          # 共享 UI 组件
-│   ├── shared/          # Navbar, Footer, TextureOverlay (Noise/Grain)
-│   ├── home/            # SandEffect (Canvas), Butterfly (SVG)
-│   ├── projects/        # CrayonCard, GalleryViewer
-│   └── footprint/       # InteractiveMap (Leaflet)
-├── content/             # 核心数据源 (JSON / Markdown)
-│   ├── projects.json    # 项目列表数据
-│   └── footprint/       # locations.json (足迹坐标)
-├── lib/                 # 核心逻辑与工具函数
-│   ├── data-loader.ts   # 封装 fs.readFileSync 的静态生成函数
-│   └── constants.ts     # 定义 DESIGN_SPEC 中的颜色与变量
-├── public/              # 静态资产
-│   ├── images/          # 所有的项目/个人图片资产
-│   └── content/         # (由脚本生成) wechat-posts.json
-├── scripts/             # 构建辅助脚本
-│   └── crawler.js       # 微信公众号自动化抓取逻辑
-├── styles/              # 全局 CSS 变量与重置
-└── types/               # TypeScript 类型定义
+├── src/
+│   ├── components/      # UI Components
+│   │   ├── layout/      # Navbar, SocialContact, PageTransition
+│   │   ├── home/        # SandCanvas, Butterfly
+│   │   ├── project/     # FeaturedProject, ProjectCarousel
+│   │   └── footprint/   # FootprintMap, MapInner
+│   ├── lib/             # Data Layer & Logic
+│   │   └── data.ts      # Unified JSON data loader
+│   ├── app/             # Next.js App Router Pages
+│   └── styles/          # Global CSS
+├── public/              # Static Assets & Generated JSON
+└── scripts/             # Build-time scripts (crawler.js)
 ```
+
+### 1.1 技术栈 (Tech Stack)
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Vanilla CSS Modules (Strict)
+- **Animation**: Framer Motion (Page Transitions), Canvas API (Sand)
+- **Map**: Leaflet.js
 
 ---
 
@@ -67,6 +67,7 @@
 ### 3.1 微信文章自动化抓取 (Scripts)
 - **实现方式**: `scripts/crawler.js` 
 - **方案**: 采用微信后台管理接口 `appmsgpublish` 直连模式。利用管理员 Cookie 与 Token 在打包时获取官方数据流。
+- **分页循环策略**: 脚本采用 `while` 循环分页请求（每次 10 篇），自动通过 `del_flag === 1` 识别并跳过已删除文章，直至填满 **10 篇有效数据**。
 - **纯净方案**: 脚本仅抓取 **标题、封面、原始链接、发布日期**，严格过滤正文摘要 (Excerpt) 与分类标签 (Tags) 以保持 UI 呼吸感。
 - **触发**: 在 `package.json` 的 `prebuild` 钩子中运行：`"build": "npm run prebuild && next build"`。
 

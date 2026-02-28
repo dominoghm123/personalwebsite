@@ -40,7 +40,8 @@
     transition: color 0.3s;
 }
 
-.navItem:hover {
+.navItem:hover,
+.active {
     color: var(--color-text);
 }
 
@@ -55,7 +56,8 @@
     transition: width 0.3s var(--ease-out);
 }
 
-.navItem:hover::after {
+.navItem:hover::after,
+.active::after {
     width: 100%;
 }
 

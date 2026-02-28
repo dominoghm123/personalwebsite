@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './AboutClient.module.css';
-import { EmailIcon, RednoteIcon, InstagramIcon, XIcon, LinkedinIcon } from '@/components/icons/SocialIcons';
+import SocialContact from '@/components/layout/SocialContact';
 
 interface Contact {
     platform: string;
@@ -35,24 +35,11 @@ interface AboutClientProps {
     hobbies: Hobby[];
 }
 
-// Helper to map platform name to our static SVG components
-const renderSocialIcon = (platform: string) => {
-    const iconClass = styles.socialIcon;
-    switch (platform.toLowerCase()) {
-        case 'email': return <EmailIcon className={iconClass} />;
-        case 'rednote': return <RednoteIcon className={iconClass} />;
-        case 'instagram': return <InstagramIcon className={iconClass} />;
-        case 'x': return <XIcon className={iconClass} />;
-        case 'linkedin': return <LinkedinIcon className={iconClass} />;
-        default: return null;
-    }
-};
-
 export default function AboutClient({ config, hobbies }: AboutClientProps) {
     const [selectedHobby, setSelectedHobby] = useState<Hobby | null>(null);
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} container-padding`}>
             {/* HERO BIOGRAPHY SECTION */}
             <section className={styles.hero}>
                 <div className={styles.avatarBox}>
@@ -104,21 +91,7 @@ export default function AboutClient({ config, hobbies }: AboutClientProps) {
             {/* CONTACT BOX */}
             <section className={styles.contactBox}>
                 <h3>Contact Me {'>'}</h3>
-                <div className={styles.contactLinks}>
-                    {config.contacts.map((contact) => (
-                        <a
-                            key={contact.platform}
-                            href={contact.url || `mailto:${contact.value}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.socialLink}
-                            aria-label={contact.platform}
-                            title={contact.platform}
-                        >
-                            {renderSocialIcon(contact.platform)}
-                        </a>
-                    ))}
-                </div>
+                <SocialContact contacts={config.contacts} />
             </section>
         </div>
     );

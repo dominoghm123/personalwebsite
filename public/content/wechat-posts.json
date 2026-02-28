@@ -22,13 +22,6 @@
             "publishDate": "2025-12-31"
         },
         {
-            "id": "a8637dbf88b3ce5e14554e8cdabff49d",
-            "title": "一则声明",
-            "url": "https://mp.weixin.qq.com/s/CfIrvfxSFkyVmUc-mDB_rw",
-            "cover": "/images/covers/a8637dbf88b3ce5e14554e8cdabff49d.webp",
-            "publishDate": "2025-11-17"
-        },
-        {
             "id": "f77b43130cd1d10a0b2147bd0263b3c4",
             "title": "📌一日徒步|桂林阳朔漓江精华段线路🚶5h",
             "url": "https://mp.weixin.qq.com/s/NF_Zua_9bXCb2RfqUtbe2w",
@@ -69,6 +62,13 @@
             "url": "https://mp.weixin.qq.com/s/ol-xrUpGaru7WufQP_Q6FQ",
             "cover": "/images/covers/2dc2ad75ae81f814ad99b925d03bd38a.webp",
             "publishDate": "2025-09-11"
+        },
+        {
+            "id": "4f8a7a9b8dbdfddc1f44703d07e7b8ce",
+            "title": "爵士乐是一种高弹性的音乐",
+            "url": "https://mp.weixin.qq.com/s/ooc5pmMraz6vEjSaa7ukbw",
+            "cover": "/images/covers/4f8a7a9b8dbdfddc1f44703d07e7b8ce.webp",
+            "publishDate": "2025-08-30"
         }
     ]
 }
