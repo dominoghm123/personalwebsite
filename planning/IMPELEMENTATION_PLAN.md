@@ -24,11 +24,20 @@
 - [ ] **Project 特型舞台**:
     - [ ] 开发高度还原的 `FeaturedProject`（悬停换图）与横向拉拽的 `ProjectCarousel`（弹性滑动），彻底废弃标准版栅格机制。
 
-## 📸 第三步：多媒体系统 (Multis & Map)
+## 📸 第三步：多媒体系统 (Multis & Map) [DONE]
 *策略：通过文件夹动态扫描 (Directory Scanning) 替代手动录入，减少后续维护工作。*
 
-- [ ] **自动画廊 (Gallery Engine)**: 开发自动扫描文件夹图片的 API。
-- [ ] **地图集成 (Map MVP)**: 仅显示 locations.json 中的位置。详情面板直接复片 Project 的 Card 组件逻辑以减少重复劳动。
+- [x] **动态分类路由 (`/project/[category]`)**: 
+    - [x] 自动扫描 `public/images/project/[category]` 下的所有 WebP 图片。
+    - [x] 使用 CSS Columns 渲染 Masonry 图集。
+- [x] **沉浸式 Lightbox**:
+    - [x] 开发 `Lightbox.tsx` 通用组件，支持全屏遮罩、键盘 ESC 退出。
+    - [x] 支持在图集中通过箭头（或物理按键）前后无缝切换图片。
+- [x] **足迹互动 (Footprint Map)**:
+    - [x] 接入 Leaflet.js 并加载 `locations.json`。
+    - [x] **视觉重构**: 切换为灰白极简风格，锁定全球视野范围 (Max Bounds)。
+    - [x] **交互简化**: 去除 Popup 描述，仅保留快照与地名。
+    - [x] **动态统计**: 实现地图与文字之间的统计看板（国家/城市计数）。
 - [ ] **Hobbies 特效**: 集中攻克“模糊->清晰”的遮罩逻辑组件。
 
 ## 🛸 第四步：体验打磨与一键部署 (Polish & Ship)

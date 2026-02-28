@@ -1,0 +1,193 @@
+{
+  "locations": [
+    {
+      "id": "Hangzhou",
+      "cityName": "Hangzhou, China",
+      "coords": [
+        30.2741,
+        120.1551
+      ],
+      "mainImage": "/images/footprint/footprint-Hangzhou/1679294254132.webp"
+    },
+    {
+      "id": "Shanghai",
+      "cityName": "Shanghai, China",
+      "coords": [
+        31.2304,
+        121.4737
+      ],
+      "mainImage": "/images/footprint/footprint-Shanghai/IMG_20260213_150641.webp"
+    },
+    {
+      "id": "changchun",
+      "cityName": "Changchun, China",
+      "coords": [
+        43.8171,
+        125.3235
+      ],
+      "mainImage": "/images/footprint/footprint-changchun/IMG_20241212_155947.webp"
+    },
+    {
+      "id": "chongqing",
+      "cityName": "Chongqing, China",
+      "coords": [
+        29.563,
+        106.5516
+      ],
+      "mainImage": "/images/footprint/footprint-chongqing/1.webp"
+    },
+    {
+      "id": "cornwall",
+      "cityName": "Cornwall, UK",
+      "coords": [
+        50.2114,
+        -5.48
+      ],
+      "mainImage": "/images/footprint/footprint-cornwall/IMG_20250717_155705.webp"
+    },
+    {
+      "id": "dali",
+      "cityName": "Dali, China",
+      "coords": [
+        25.6065,
+        100.2676
+      ],
+      "mainImage": "/images/footprint/footprint-dali/IMG_20240831_174844.webp"
+    },
+    {
+      "id": "datong",
+      "cityName": "Datong, China",
+      "coords": [
+        40.0768,
+        113.3001
+      ],
+      "mainImage": "/images/footprint/footprint-datong/IMG_20240619_091340.webp"
+    },
+    {
+      "id": "edingurgh",
+      "cityName": "Edinburgh, UK",
+      "coords": [
+        55.9533,
+        -3.1883
+      ],
+      "mainImage": "/images/footprint/footprint-edingurgh/IMG_20250713_173343.webp"
+    },
+    {
+      "id": "guilin",
+      "cityName": "Guilin, China",
+      "coords": [
+        25.2736,
+        110.2902
+      ],
+      "mainImage": "/images/footprint/footprint-guilin/IMG_20251013_155733.webp"
+    },
+    {
+      "id": "hongkong",
+      "cityName": "Hong Kong, SAR",
+      "coords": [
+        22.3193,
+        114.1694
+      ],
+      "mainImage": "/images/footprint/footprint-hongkong/IMG_20251229_171848.webp"
+    },
+    {
+      "id": "kunming",
+      "cityName": "Kunming, China",
+      "coords": [
+        25.0453,
+        102.7103
+      ],
+      "mainImage": "/images/footprint/footprint-kunming/IMG_20240817_114852.webp"
+    },
+    {
+      "id": "london",
+      "cityName": "London, UK",
+      "coords": [
+        51.5074,
+        -0.1278
+      ],
+      "mainImage": "/images/footprint/footprint-london/IMG_20250709_165003.webp"
+    },
+    {
+      "id": "quanzhou",
+      "cityName": "Quanzhou, China",
+      "coords": [
+        24.8741,
+        118.6759
+      ],
+      "mainImage": "/images/footprint/footprint-quanzhou/IMG_20250128_201141.webp"
+    },
+    {
+      "id": "seoul",
+      "cityName": "Seoul, South Korea",
+      "coords": [
+        37.5665,
+        126.978
+      ],
+      "mainImage": "/images/footprint/footprint-seoul/1.webp"
+    },
+    {
+      "id": "shenzhen",
+      "cityName": "Shenzhen, China",
+      "coords": [
+        22.5431,
+        114.0579
+      ],
+      "mainImage": "/images/footprint/footprint-shenzhen/IMG_20251225_143603.webp"
+    },
+    {
+      "id": "suzhou",
+      "cityName": "Suzhou, China",
+      "coords": [
+        31.299,
+        120.5853
+      ],
+      "mainImage": "/images/footprint/footprint-suzhou/IMG_20240721_154236_edit_5619675386121.webp"
+    },
+    {
+      "id": "taiyuan",
+      "cityName": "Taiyuan, China",
+      "coords": [
+        37.8706,
+        112.5489
+      ],
+      "mainImage": "/images/footprint/footprint-taiyuan/IMG_20240617_144213.webp"
+    },
+    {
+      "id": "wenzhou",
+      "cityName": "Wenzhou, China",
+      "coords": [
+        27.9943,
+        120.6994
+      ],
+      "mainImage": "/images/footprint/footprint-wenzhou/Camera_XHS_16745548592561000g0081ui0bvjgf205g5nq361ig8gd7gedum40.webp"
+    },
+    {
+      "id": "wuhan",
+      "cityName": "Wuhan, China",
+      "coords": [
+        30.5928,
+        114.3055
+      ],
+      "mainImage": "/images/footprint/footprint-wuhan/IMG_20240318_120558.webp"
+    },
+    {
+      "id": "wuxi",
+      "cityName": "Wuxi, China",
+      "coords": [
+        31.4912,
+        120.3119
+      ],
+      "mainImage": "/images/footprint/footprint-wuxi/IMG_20251206_113335.webp"
+    },
+    {
+      "id": "york",
+      "cityName": "York, UK",
+      "coords": [
+        53.9591,
+        -1.0815
+      ],
+      "mainImage": "/images/footprint/footprint-york/IMG_20250716_114822.webp"
+    }
+  ]
+}

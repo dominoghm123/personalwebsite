@@ -62,9 +62,17 @@
   - **画廊交互**: 支持点击图片进入沉浸式全屏查看模式 (Lightbox)。
 
 ### 3.4 交互式地图 (Footprint 页面)
-- **引擎**: Leaflet.js 配搭 CartoDB Positron 浅灰风格主题。
-- **数据源**: [/content/footprint/locations.json](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/content/footprint/locations.json)。
-- **逻辑**: 点击图钉 (Pin) -> 在地图下方滑出详情卡片。详情卡片不包含灰色文字描述，仅展示关联图片及跳转链接。
+- **引擎**: Leaflet.js。
+- **视觉风格**: **灰白极简底图与高亮原色点缀**。
+  - **底图 (Tiles)**：强制为灰白（Grayscale Minimalist）。
+  - **图针与气泡 (Markers & Popups)**：图针发光点和气泡中的文字标题使用主题淡紫色 (`var(--color-primary)`)。气泡中的快照保留**原图本来色彩**。
+- **边界约束**: 
+  - **缩放范围**: 最小缩放级别必须正好适配全球范围且固定不可滑动；最大缩放级别限制为城市细节级。
+  - **平移限制**: 不允许无限左右循环滑动（`no wrap`）。
+- **交互逻辑**: 点击图钉 (Pin) -> 弹出式气泡（Popup）呈现**地名**与**城市快照**（此处**不显示描述文字**）。
+- **数据统计**: 在页面中动态展示已点亮的“国家/城市”总数。
+  - **字体要求**: 与页面大标题一致（`var(--font-secondary)`，Semi-bold）。
+  - **位置布局**: 紧贴地图下方，位于感性文字描述（Small Prose）的上方，作为地图与文字之间的过渡。
 
 ### 3.5 关于与兴趣 (About 页面)
 - **兴趣模块 (Hobby Grid)**: 横向排列的 Flex 卡片组。

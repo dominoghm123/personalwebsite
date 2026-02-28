@@ -88,6 +88,16 @@
   - `> 900px`: 桌面布局 (Grid 2/3 cols)
   - `< 900px`: 移动布局 (Stack 1 col)
 - **Post卡片**: 采用 `columns: 3` (Masonry) 布局。
+- **Footprint 地图规范**:
+  - **色调约束**: 
+    - **底图 (Base Map)**: 必须是灰白高调（Light Grayscale），通过 CSS 滤镜去色。
+    - **前景元素**: 图针 (Pin) 与弹窗内的照片必须保留**原有色彩**，不可被灰度滤镜污染。
+  - **图针 (Pin)**: 圆点发光动效（静态与悬停光晕均使用 `var(--color-primary-light)` 或主色）。
+  - **弹出气泡 (Popup)**: 极简卡片化。仅 [图片(Top) + 地名(Bottom)]。地名字号颜色统一为 `var(--color-primary)`。
+  - **动态统计 (Stats)**: 
+    - **位置**: 位于地图容器下方，及感性描述文字 (Prose) 的上方，作为两者的视觉衔接。
+    - **样式**: 字体强制使用 `var(--font-secondary)`，Semi-bold (600)，字色 `var(--color-primary)`，字号对齐 Secondary Heading (`clamp(24px, 2.5vw, 32px)`)。
+    - **间距**: 保持与地图及文字各 `32px - 48px` 的空气感呼吸间距。
 
 ---
 
