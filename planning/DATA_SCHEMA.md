@@ -41,40 +41,35 @@
 ```
 
 ### 1.3 项目数据 (`content/projects.json`)
-作为首页 Carousel 和 Featured 的核心索引。
+作为首页 Carousel 和 Featured 的核心索引。区分外链项目与内建图集模式。
 ```json
 {
   "featured": {
     "id": "urban-aesthetics",
     "title": "From Alleys to Aesthetics",
-    "description": "I built the guide on the belief that 'Our wealth hides in daily familiarity.'",
+    "description": "...",
     "images": {
-      "base": "/images/project/urban-aesthetics-guide/booklet-shanghai-playbook-cover.webp",
-      "hover": "/images/project/urban-aesthetics-guide/booklet-shanghai-playbook-2.webp"
+      "base": "/images/project/...-cover.webp",
+      "hover": "/images/project/...-2.webp"
     },
-    "link": "https://payhip.com/..." 
+    "link": "https://..." 
   },
   "carousel": [
     {
       "id": "podcast",
-      "title": "Podcast: Theroversays",
+      "title": "Podcast: 漫游者说",
       "thumbnail": "/images/project/podcast/podcast_cover.webp",
-      "description": "A solo podcast centred around travel narratives. Principle: 'To nurture imagination for the unfamiliar; our wealth lies in observation.'",
-      "externalUrl": "https://www.xiaoyuzhoufm.com/podcast/63b53f37a7b161b6b921c84d"
+      "description": "...",
+      "type": "external",
+      "externalUrl": "https://..."
     },
     {
       "id": "sketches",
       "title": "Illustration Sketches",
       "thumbnail": "/images/project/illustration-sketches/sketch-1.webp",
+      "description": "...",
       "type": "gallery",
       "category": "illustration-sketches"
-    },
-    {
-      "id": "photography",
-      "title": "Photography",
-      "thumbnail": "/images/project/photography/12.webp",
-      "type": "gallery",
-      "category": "photography"
     }
   ]
 }

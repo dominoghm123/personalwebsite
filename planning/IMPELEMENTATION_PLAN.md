@@ -19,9 +19,10 @@
 
 - [ ] **通用数据加载器 (Single Logic)**: 编写一个统一的 `getStaticProps` 逻辑，用于读取 `public/content/` 下的所有 JSON。
 - [ ] **微信抓取脚本 (scripts/crawler.js)**: 在构建脚本中加入一行命令，自动从公众号获取内容。
-- [ ] **瀑布流与卡片 (Post & Project Item)**:
-    - [ ] 编写一个通用的 `CrayonCard` 组件，通过 Props 控制 Project 和 Post 的展示。
-    - [ ] 快速适配 Masonry 布局。
+- [ ] **Post 瀑布流组件**:
+    - [ ] 基于 React 纯 CSS Column 分配制作流式的 Masonry 卡片网络，并引入 `Hepta Slab` 卡片专属字体响应约束。
+- [ ] **Project 特型舞台**:
+    - [ ] 开发高度还原的 `FeaturedProject`（悬停换图）与横向拉拽的 `ProjectCarousel`（弹性滑动），彻底废弃标准版栅格机制。
 
 ## 📸 第三步：多媒体系统 (Multis & Map)
 *策略：通过文件夹动态扫描 (Directory Scanning) 替代手动录入，减少后续维护工作。*
