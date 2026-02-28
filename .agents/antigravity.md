@@ -21,6 +21,10 @@
     *   自动为代码中的非显而易见部分添加 `// 🎓 这里的设计决策：...`。
     *   注释应涵盖：存在的目的、对应的 Spec 章节、以及性能/兼容性考量。
 
+4.  **禁止擅自提交 Git (No Unilateral Commits)**:
+    *   **严格禁止**在未获得 USER 明确文字授权的情况下执行 `git add` 或 `git commit` 以及任何向远端仓库的 `push` 操作。
+    *   所有重大的修改可以暂存于工作区，并由 USER 决定何时发起 commit。
+
 ## 2. 工程约束 (Technical Bounds)
 
 *   **样式选型**: 严格使用 CSS Modules & CSS Custom Properties。严禁引入 Tailwind (除非 USER 明确推翻 ADR-0001)。
