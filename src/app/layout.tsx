@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import SandCanvas from "@/components/home/SandCanvas";
 import PageTransition from "@/components/layout/PageTransition";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
     title: {
@@ -53,6 +54,7 @@ export default function RootLayout({
                     </PageTransition>
                 </main>
                 <Footer />
+                <Analytics />
             </body>
         </html>
     );
