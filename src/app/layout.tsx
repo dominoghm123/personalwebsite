@@ -4,6 +4,7 @@ import TextureOverlay from "@/components/layout/TextureOverlay";
 import Navbar from "@/components/layout/Navbar";
 import SandCanvas from "@/components/home/SandCanvas";
 import PageTransition from "@/components/layout/PageTransition";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
     title: {
@@ -41,16 +42,17 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet" />
             </head>
-            <body>
+            <body style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
                 {/* 🎓 这里的设计决策：布局组件（Texture, Navbar, SandCanvas）放在根层级，确保路由跳转时不重复卸载渲染，保持动效丝滑。 */}
                 <SandCanvas />
                 <TextureOverlay />
                 <Navbar />
-                <main>
+                <main style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
                     <PageTransition>
                         {children}
                     </PageTransition>
                 </main>
+                <Footer />
             </body>
         </html>
     );

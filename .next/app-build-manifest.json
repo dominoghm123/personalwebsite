@@ -12,6 +12,12 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/about/page.css",
+      "static/chunks/app/about/page.js"
+    ],
     "/post/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -29,18 +35,6 @@
       "static/chunks/main-app.js",
       "static/css/app/footprint/page.css",
       "static/chunks/app/footprint/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/about/page.css",
-      "static/chunks/app/about/page.js"
-    ],
-    "/project/[category]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/project/[category]/page.css",
-      "static/chunks/app/project/[category]/page.js"
     ]
   }
 }

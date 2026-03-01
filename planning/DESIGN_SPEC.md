@@ -1,6 +1,6 @@
 # 🎨 DESIGN_SPEC.md — 视觉开发指南 (Source of Truth)
 
-> **版本**: v1.1 | **基准**: [PRD_ZH.md](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/PRD_MASTER_ZH.md)
+> **版本**: v1.2 | **基准**: [PRD_ZH.md](file:///Users/dqc76/Documents/Deep%20Dive%20into%20AI/personalwebsite/planning/PRD_MASTER_ZH.md)
 > **核心原则**: 还原“呼吸感”与“纸张质感”。严禁使用标准框架默认样式。
 
 ---
@@ -17,6 +17,7 @@
 | `--color-text-muted`| `#888888` | **次要文字**：描述、辅助说明 |
 | `--color-hover-bg` | `#F0EEE6` | **按压感**：卡片在鼠标滑过时的柔和背景色 |
 | `--color-border` | `#E8E4F0` | **分割线**：极弱的边界线 |
+| `--color-footer-text`| `#A0A0A0` | **版权文字**：比 muted 更浅，降低视觉干扰 |
 
 ### 1.2 字体与排版 (Typography)
 - **标题 (Heading)**: `'Hepta Slab'`, serif. 
@@ -86,7 +87,8 @@
 
 ## 4. 组件布局指南 (Layout Spec)
 
-- **主页位移补偿**: 由于 Navbar (fixed) 脱离文档流，为防止 `100vh` 主容器导致光标和视口绝对死板居中，主栅格必须追加 `margin-top: -120px` 的光学校正。
+- **主页对齐补偿 (v1.1)**: 在 `flex-column` 容器中通过 `justify-content: center` 替代 `flex-grow`。主体内容通过 `padding-top: 150px` 的固定位移补偿 Navbar 高度占用，使得整体处于视觉中心。同时，主页严格执行“禁滚” (No-Scroll) 策略，所有内容必须在不滚动的情况下在首屏可见（包括页脚）。
+- **关于页底部优化 (v1.1)**: 内容容器底部 Padding 从 120px 缩减至 0px，以确保 Footer 能更紧凑地衔接在内容之后，提升视觉整体感。
 - **子页顶部补偿**: 所有二级散页（Post, Project, Footprint, About）由于 Navbar 高度为 80px，为了实现视觉上 40px 的安全间距，主容器应当强制设定 `padding-top: 120px`。
 - **子页标题规划**: 主标题 H1 必须无标点，字号等比缩小控制在 `44px` 以下，且颜色保持 `var(--color-primary)`。
 - **卡片排版约束**: 所有承载内容的组件卡片（PostCard, Carousel Item，Featured 等），其内部标题必须统一为 `var(--font-secondary)` (Hepta Slab)，默认字重 600，且严禁使用死板 Px，必须使用如 `clamp(18px, 1.8vw, 20px)` 的动态比例缩放公式。
@@ -107,6 +109,12 @@
     - **位置**: 位于地图容器下方，及感性描述文字 (Prose) 的上方，作为两者的视觉衔接。
     - **样式**: 字体强制使用 `var(--font-secondary)`，Semi-bold (600)，字色 `var(--color-primary)`，字号对齐 Secondary Heading (`clamp(24px, 2.5vw, 32px)`)。
     - **间距**: 保持与地图及文字各 `32px - 48px` 的空气感呼吸间距。
+
+- **全局页脚 (v1.1)**:
+    - **位置**: 采用“吸底”布局。在 `100vh` 的 App Shell 中，Footer 位于底部，Main 容器通过 `flex: 1` 占据剩余空间。
+    - **首页可见性**: 在首页，Footer 必须默认可见；而在长页面，Footer 随着 Main 容器的整体视口高度贴合展示。
+    - **样式**: `font-size: 12px`，`color: var(--color-footer-text)`，`text-align: center`。
+    - **装饰**: 在非首页页面，页脚上方需有 `1px solid var(--color-border)` 的超细分割线。
 
 ---
 

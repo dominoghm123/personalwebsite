@@ -11,13 +11,15 @@ export default async function Home() {
 
     return (
         <section id="home" style={{
-            minHeight: '100vh',
+            flex: 1,
             position: 'relative',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: 'center', /* 🎓 Keep content centered as a group */
             alignItems: 'center',
-            paddingBottom: '40px'
+            paddingTop: '150px', /* 🎓 Compensation for visually fixed navbar */
+            paddingBottom: '20px',
+            overflow: 'hidden'
         }}>
             {/* 🎓 Grid Container (5fr 7fr) */}
             <div style={{
@@ -31,8 +33,8 @@ export default async function Home() {
                 alignItems: 'center',
                 position: 'relative',
                 zIndex: 10,
-                flexGrow: 1,
-                marginTop: '-80px' /* Substantial negative margin to lift up the grid, navbar is 80px */
+                /* 🎓 Removed flexGrow: 1 to prevent pushing the footer to the very bottom */
+                paddingTop: '40px' /* Small top breathing room */
             }}>
                 {/* Left: Content */}
                 <div style={{ pointerEvents: 'auto' }}>
@@ -66,7 +68,7 @@ export default async function Home() {
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
-                padding: '24px 0',
+                padding: '32px 0 16px 0', /* 🎓 Compact padding for V1.1 No-Scroll */
                 position: 'relative',
                 zIndex: 20
             }}>

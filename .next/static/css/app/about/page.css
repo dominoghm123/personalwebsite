@@ -7,7 +7,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 120px;
+    padding-bottom: 0px;
     /* PRD rule: solid bottom breathing room */
     position: relative;
     z-index: 10;

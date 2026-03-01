@@ -44,6 +44,7 @@ export default function MapInner({ locations }: MapInnerProps) {
             maxBounds={maxBounds}
             maxBoundsViscosity={1.0}
             worldCopyJump={false}
+            attributionControl={false} /* 🎓 v1.1: Hide default attribution for minimalist look */
         >
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'

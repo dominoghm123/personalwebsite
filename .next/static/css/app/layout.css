@@ -10,6 +10,7 @@
   --color-text-muted: #888888;
   --color-border: #E8E4F0;
   --color-hover-bg: #F0EEE6;
+  --color-footer-text: #666666;
 
   --shadow-card: 0 24px 48px rgba(0, 0, 0, 0.015), 0 4px 12px rgba(0, 0, 0, 0.01);
   --shadow-hover: 0 32px 64px rgba(200, 194, 231, 0.15), 0 8px 16px rgba(0, 0, 0, 0.02);
@@ -97,6 +98,51 @@ a {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/Footer.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.Footer_footer__eNA9m {
+    width: 100%;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto;
+    position: relative;
+    z-index: 50;
+}
+
+.Footer_divider__cToZ6 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 32px auto;
+    border: none;
+    border-top: 1px solid var(--color-border);
+    opacity: 0.5;
+}
+
+.Footer_content__qVp_X {
+    text-align: center;
+    font-family: var(--font-primary);
+    /* Afacad */
+    font-size: 12px;
+    color: var(--color-footer-text);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+}
+
+.Footer_attribution__Y_YQF {
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+/* Home page specific: no divider, closer to social icons */
+.Footer_homeFooter__ZaaqE {
+    padding: 0 0 40px 0;
+    border: none;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/Navbar.module.css ***!

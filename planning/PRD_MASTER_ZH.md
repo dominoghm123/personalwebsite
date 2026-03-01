@@ -1,7 +1,7 @@
 # 📜 PRD_ZH.md — 个人网站需求规格说明书 (中文版)
 
-> **版本**: v1.3 | **最后更新**: 2026-02-26
-> **状态**: **UI 设计已冻结**。代码开发的唯一依据是：`PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`, `CONTENT_INVENTORY.md`。`design-preview.html` 仅作为**基础视觉美感参考**，禁止将其作为覆盖 PRD 逻辑的唯一真理。
+> **版本**: v1.4 | **最后更新**: 2026-03-01
+> **状态**: **v1.1 迭代启动**。代码开发的唯一依据是：`PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`, `CONTENT_INVENTORY.md`。`design-preview.html` 仅作为**基础视觉美感参考**，禁止将其作为覆盖 PRD 逻辑的唯一真理。
 
 ---
 
@@ -47,7 +47,8 @@
 - **流沙效果 (Sand Effect)**: 背景布满高密度细微粒子。鼠标移动时会排开沙粒，且碰撞处透明度提升 50%。
 - **由于对蝴蝶 (Butterfly Pair)**: 一一大（右侧倾斜15°）一小（更靠右倾斜-20°）。边缘需具备蜡笔样式的模糊（Crayon Blur）滤镜感。
 - **独立悬停**: 鼠标指向某只蝴蝶时，该蝴蝶独立产生 translateY(-12px) 上浮、缩放 (1.05) 及旋转偏移。
-- **首页页脚**: 在首页最下方居中放置社交联系方式图标（与 About 页一致），使用统一的 `SocialContact` 组件。
+- **首页页脚**: 在首页主体内容下方放置社交联系方式图标（与 About 页一致），使用统一的 `SocialContact` 组件。
+- **布局紧凑化 (v1.1)**: 首页核心主体 (标题与蝴蝶) 与下方 SocialContact 之间应保持紧凑的视觉联系，避免被推至屏幕底端。移除 Grid 容器的 `flex-grow` 或过大的 padding，采用自然居中布局。
 - **全局过渡**: 页面切换时执行全局淡入 (Fade-in) 与微量垂直位移（10px）动效，时长 500ms。
 
 ### 3.2 自动化内容抓取 (Post 页面)
@@ -78,6 +79,7 @@
   - **缩放范围**: 最小缩放级别必须正好适配全球范围且固定不可滑动；最大缩放级别限制为城市细节级。
   - **平移限制**: 不允许无限左右循环滑动（`no wrap`）。
 - **交互逻辑**: 点击图钉 (Pin) -> 弹出式气泡（Popup）呈现**地名**与**城市快照**（此处**不显示描述文字**）。
+- **视觉净化 (v1.1)**: 隐藏 Leaflet 及 OpenStreetMap 的原生 Attribution 标识，相关的版权声明移动至全局 Footer 标注。
 - **数据统计**: 在页面中动态展示已点亮的“国家/城市”总数。
   - **字体要求**: 与页面大标题一致（`var(--font-secondary)`，Semi-bold）。
   - **位置布局**: 紧贴地图下方，位于感性文字描述（Small Prose）的上方，作为地图与文字之间的过渡。
@@ -93,6 +95,11 @@
 - **底部联系方式 (Contact Section)**:
   - 位于页面底部。左侧居下写“Contact Me >”，右侧横向排布一排社交图标链接。
   - 必须且仅能使用高品质 **实心纯色 SVG 图标**。图标附有简洁的微缩放/颜色渐变 Hover 实效。
+
+### 3.6 全局注脚 (Footer) (v1.1 新增)
+- **文案内容**: `© 2026 Qicheng Dai. All rights reserved.`
+- **合规标注**: 同时包含地图数据来源标注：`Map data © OpenStreetMap contributors, CARTO`.
+- **视觉要求**: 极简、低存在感。位于所有页面的最底部。
 
 
 ---

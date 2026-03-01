@@ -44,7 +44,20 @@
 *策略：跳过过度优化，直接上线，利用 Vercel 本身的性能优势。*
 
 - [x] **全局 SEO & Meta**: 快速填充 metadata。
-- [ ] **Vercel 一键上线**: 配置 GitHub Action 自动部署。
+- [x] **Vercel 一键上线**: 配置 GitHub Action 自动部署。
+
+## 🪐 第五步：v1.1 视觉精修迭代 (v1.1 Refinement)
+*策略：在基本功能稳固后，针对排班、合规与品牌细节进行像素级优化。*
+
+- [x] **首页对齐优化**: 通过 `padding-top: 150px` 对齐视觉中心，同时缩短垂直轴冗余间距。
+- [x] **关于页布局优化**: 缩减 content container 底部 padding，提升 Footer 可见度。
+- [x] **App Shell 布局优化**: 将全局布局改为 `100vh` + `overflow: hidden` (body)，`main` 实现内容滚动，Footer 全局吸底。
+- [x] **首页禁滚约束**: 移除首页 100vh 冗余高度，确保默认状态可见 Footer 且无法滑动。
+- [x] **地图标识净化**: 在 `MapInner.tsx` 中禁用 attributionControl。
+- [x] **全局 Footer 实现**:
+    - [x] 创建 `src/components/layout/Footer.tsx`。
+    - [x] 在 `RootLayout` 引入 Footer，配置版权信息及地图来源标注。
+    - [x] 针对不同页面（首页 vs 子页）应用不同的页脚样式。
 
 ---
 
