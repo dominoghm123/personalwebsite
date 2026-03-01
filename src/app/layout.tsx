@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         locale: "en_US",
-        url: "https://qicheng-domino.com",
+        url: "https://qcdomino.space",
         title: "Qicheng Domino | Wonderland",
         description: "Creative portfolio, thoughts, and photography of Qicheng (Domino).",
         siteName: "Qicheng Domino",

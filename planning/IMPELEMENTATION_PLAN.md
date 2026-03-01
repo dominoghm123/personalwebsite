@@ -43,8 +43,8 @@
 ## 🛸 第四步：体验打磨与一键部署 (Polish & Ship)
 *策略：跳过过度优化，直接上线，利用 Vercel 本身的性能优势。*
 
-- [x] **全局 SEO & Meta**: 快速填充 metadata。
-- [x] **Vercel 一键上线**: 配置 GitHub Action 自动部署。
+- [x] **全局 SEO & Meta**: 快速填充 metadata，配置官方域名 `qcdomino.space`。
+- [x] **Vercel 一键上线**: 配置 GitHub Action 自动部署，绑定腾讯云域名。
 
 ## 🪐 第五步：v1.1 视觉精修迭代 (v1.1 Refinement)
 *策略：在基本功能稳固后，针对排班、合规与品牌细节进行像素级优化。*

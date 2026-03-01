@@ -1,7 +1,7 @@
 # 📜 PRD_ZH.md — 个人网站需求规格说明书 (中文版)
 
-> **版本**: v1.4 | **最后更新**: 2026-03-01
-> **状态**: **v1.1 迭代启动**。代码开发的唯一依据是：`PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`, `CONTENT_INVENTORY.md`。`design-preview.html` 仅作为**基础视觉美感参考**，禁止将其作为覆盖 PRD 逻辑的唯一真理。
+> **版本**: v1.5 | **最后更新**: 2026-03-01
+> **状态**: **v1.1 迭代完成，域名已上线 (qcdomino.space)**。代码开发的唯一依据是：`PRD_MASTER_ZH.md`, `DESIGN_SPEC.md`, `TECH_SPEC.md`, `IMPLEMENTATION_PLAN.md`, `DATA_SCHEMA.md`, `CONTENT_INVENTORY.md`。
 
 ---
 
