@@ -37,7 +37,7 @@ export default async function FootprintPage() {
                 <p>
                     Every pin on this map represents a moment of discovery.
                     From the mist-covered streets of Edinburgh to the neon-lit alleys of Hong Kong,
-                    these are the places that have shaped my perspective and filled my wanderer's soul.
+                    these are the places that have shaped my perspective and filled my wanderer&apos;s soul.
                 </p>
             </div>
         </div>
